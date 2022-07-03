@@ -1,0 +1,19 @@
+{
+  "name": "cen4010-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tommy-Las/CEN4010-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tommy-Las/CEN4010-Project/issues"
+  },
+  "homepage": "https://github.com/Tommy-Las/CEN4010-Project#readme"
+}
