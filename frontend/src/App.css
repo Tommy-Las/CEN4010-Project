@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    padding: 22px 15px;
+    background-color: #86dcb9;
+    display: flex;
+    justify-content: space-between;
+    color: black;
+}
+
+
+.nav li {
+    color: black;
+    font-size: 17px;
+    display: inline-block;
+    padding: 0px 5px;
+    list-style: none;
+    text-decoration: none;
+}
+
+li a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.logout {
+    cursor: pointer;
+}
+
+.title {
+    font-size: 25px;
+}
