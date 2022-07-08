@@ -1,5 +1,5 @@
 function User(){ 
-    return <div>update user information</div>
+    return <div>Update User Information</div>
  }
 
  export default User

@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import NotFound from './components/NotFound'
 import User from './components/User';
 import Property from './components/Property';
+import AddProperty from './components/AddProperty';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element= {<Home />}/>
         <Route path='/user' element= {<User />}/>
         <Route path='/property/:property_id' element= {<Property />}/>
+        <Route path='/add' element= {<AddProperty />}/>
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>

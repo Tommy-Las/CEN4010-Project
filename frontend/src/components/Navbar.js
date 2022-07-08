@@ -10,7 +10,10 @@ function Navbar(){
                         <Link to='/'>Inventory</Link>
                     </li>
                     <li>
-                        <Link to='/user'>Update User Information</Link>
+                        <Link to='/add'>Add Property</Link>
+                    </li>
+                    <li>
+                        <Link to='/user'>Update User</Link>
                     </li>
                     <li className= 'logout' onClick={() => {console.log("test")}}>
                         Logout
