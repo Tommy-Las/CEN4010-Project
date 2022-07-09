@@ -1,5 +1,5 @@
 function AddProperty() {
-    return (<div>add property</div>)
+    return (<div>Add Property Form</div>)
 }
 
 export default AddProperty

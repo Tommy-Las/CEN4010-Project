@@ -6,13 +6,15 @@ import NotFound from './components/NotFound'
 import User from './components/User';
 import Property from './components/Property';
 import AddProperty from './components/AddProperty';
+import Login from './components/Login';
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path='/' element= {<Home />}/>
+        <Route path='/' element ={<Login />} />
+        <Route path='/inventory' element= {<Home />}/>
         <Route path='/user' element= {<User />}/>
         <Route path='/property/:property_id' element= {<Property />}/>
         <Route path='/add' element= {<AddProperty />}/>

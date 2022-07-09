@@ -1,4 +1,4 @@
 function Property(){ 
-    return <div>Property information</div>}
+    return <div>Single Property Information</div>}
 
 export default Property
