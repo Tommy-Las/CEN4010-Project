@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import Logout from './Logout'
 
 function Navbar(){ 
     return (
@@ -15,7 +16,7 @@ function Navbar(){
                     <li>
                         <Link to='/user'>Update User</Link>
                     </li>
-                    <li className= 'logout' onClick={() => {console.log("test")}}>
+                    <li className= 'logout' onClick={() => {Logout()}}>
                         Logout
                     </li>
                 </ul>
