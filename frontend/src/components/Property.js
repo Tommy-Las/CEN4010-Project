@@ -29,7 +29,7 @@ function Property(){
         <form onSubmit={search}>
             <h3>Single Property Information</h3>
             <label htmlFor="location">Location: </label>
-            <input type="text" id="location" name="location" value={location} placeholder="Location" onChange={handleChange} />
+            <input type="text" id="location" name="location" value={location} placeholder="Location" onChange={handleChange} required/>
             <br />
             <button>Search</button>
         </form>

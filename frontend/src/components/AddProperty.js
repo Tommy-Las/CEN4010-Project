@@ -4,10 +4,10 @@ import axios from "axios"
 function AddProperty() {
 
     //Stores form data
-    const [formData, setformData] = useState({ location: "2",
-                                               sqft: "3",
-                                               bedroomCount: "4",
-                                               bathRoomCount: "5",
+    const [formData, setformData] = useState({ location: "",
+                                               sqft: "",
+                                               bedroomCount: "",
+                                               bathRoomCount: "",
                                                other: ""  });
     //Updates the state formData
     function handleChange (event) {
@@ -32,7 +32,7 @@ function AddProperty() {
         <form onSubmit={handleSubmit}>
             <div>Add Property Form</div>
             <label htmlFor="location">Location: </label>
-            <input type="text" id="location" name="location" value={formData.location} placeholder="Location" onChange={handleChange} />
+            <input type="text" id="location" name="location" value={formData.location} placeholder="Location" onChange={handleChange} required/>
             <br />
             <label htmlFor="sqft">Sqft: </label>
             <input type="text" id="sqft" name="sqft" value={formData.sqft} placeholder="Ssqft" onChange={handleChange} />
