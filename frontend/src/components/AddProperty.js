@@ -4,22 +4,54 @@ import axios from "axios"
 function AddProperty() {
 
     //Stores form data
-    const [formData, setformData] = useState({ location: "",
+    const [formData, setFormData] = useState({ location: "",
                                                sqft: "",
                                                bedroomCount: "",
                                                bathRoomCount: "",
-                                               other: ""  });
-    //Updates the state formData
+                                               other: "" ,
+                                               image1:"",
+                                               image2: "",
+                                               image3: ""   });
+    //Updates the state formData 
     function handleChange (event) {
-        const {name, value} = event.target;
+        const {name, value, files} = event.target;
 
-        setformData((prevData) => {
-        return({...prevData, [name]: value})  });
+        if(name === "image1"){ 
+          setFormData((prevData) => {
+            return {...prevData, [name]: files[0]}
+          })
+        }
+        else if(name === "image2"){
+          setFormData((prevData) => {
+            return {...prevData, [name]: files[0]}
+          })
+        }
+        else if(name === "image3"){
+          setFormData((prevData) => {
+            return {...prevData, [name]: files[0]}
+          })
+        }
+        else{
+          setFormData((prevData) => {
+          return({...prevData, [name]: value})  });
+        }
     }
 
     //Does post request after submitting the form
     function handleSubmit (event) {
         event.preventDefault(); //Stops the page from refreshing after pressing the submit button
+
+        //Renders images url
+        if(formData.image1 !== ""){
+          renderFile(formData.image1, 1)
+        }
+        if(formData.image2 !== ""){
+          renderFile(formData.image2, 2)
+          console.log('2')
+        }
+        if(formData.image3 !== ""){
+          renderFile(formData.image3, 3)
+        }
 
         //Performs post method to add a new home to the database
         axios.post("http://localhost:8080/", {formData})
@@ -27,6 +59,22 @@ function AddProperty() {
                       document.location.reload(); }) 
         .catch(() => alert("Error: Home not added."));  //If request was unsuccessful show bad alert
     }
+
+    //Render images to display on screen
+    function renderFile(image, num){
+      const name = 'image' + num;
+    
+      if(image){
+        const reader = new FileReader();
+        reader.onloadend = () =>{
+          setFormData((prevData) =>{
+            return {...prevData, [name]: reader.result}
+          });
+        }
+        reader.readAsDataURL(image);
+      }
+    }
+
 
     return ( 
         <form onSubmit={handleSubmit}>
@@ -45,6 +93,10 @@ function AddProperty() {
             <br />
             <label htmlFor="other">Other details: </label>
             <textarea id="other" name="other" value={formData.other} placeholder="Other details" onChange={handleChange}></textarea>
+            <br />
+            <input type="file" id="image1" name="image1" alt="house image #1" accept="image/*" onChange={handleChange} />
+            <input type="file" id="image2" name="image2" alt="house image #2" accept="image/*" onChange={handleChange} />
+            <input type="file" id="image3" name="image3" alt="house image 31" accept="image/*" onChange={handleChange} />
             <br />
             <button>Submit</button>
         </form>
