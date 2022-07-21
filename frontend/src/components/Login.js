@@ -3,18 +3,10 @@ import { useState, useEffect } from "react";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
-
-import sendEmail from "./functions/sendEmail";
+import sendEmail from "../functions/sendEmail";
 
 // Your web app's Firebase configuration
 import firebaseConfig from './firebase_credentials.json'
-
-const actionCodeSettings = {
-    url: 'http://localhost:3000',
-    handleCodeInApp: true,
-  }
-
-
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -26,10 +18,12 @@ function Login(){
     //message displayed on screen
     const [message, setMessage] = useState('')
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         //prevent default submission
         e.preventDefault()
-        sendEmail(email)
+        const message = await sendEmail(email)
+        setEmail('')
+        setMessage(message)
     }
 
     

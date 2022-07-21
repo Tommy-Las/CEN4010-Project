@@ -1,5 +1,5 @@
-function Home() {
+function Inventory() {
     return <div>Home Page - Inventory Page</div>
 }
 
-export default Home
+export default Inventory
