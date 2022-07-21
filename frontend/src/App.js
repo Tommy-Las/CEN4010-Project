@@ -8,6 +8,7 @@ import NotFound from './components/NotFound'
 import User from './components/User';
 import Property from './components/Property';
 import AddProperty from './components/AddProperty';
+import DeleteProperty from './components/deleteProperty';
 import Login from './components/Login';
 import PerformLogin from './components/PerformLogin';
 import PrivateRoute from './components/PrivateRoute';
@@ -36,6 +37,7 @@ function App() {
         <Route path='/user' element= {<PrivateRoute><User /></PrivateRoute>}/>
         <Route path='/property/:property_id' element= {<PrivateRoute><Property /></PrivateRoute>}/>
         <Route path='/add' element= {<PrivateRoute><AddProperty /></PrivateRoute>}/>
+        <Route path='/delete' element={<PrivateRoute><DeleteProperty/></PrivateRoute>}/>
         <Route path='*' element={<PrivateRoute><NotFound/></PrivateRoute>} />
         <Route path='/login' element ={<PublicRoute><Login /></PublicRoute>} />
         <Route path='/verify' element={<PublicRoute><PerformLogin /></PublicRoute>} />

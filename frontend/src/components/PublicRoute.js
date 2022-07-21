@@ -7,5 +7,5 @@ export default function PublicRoute({children}) {
     
     const { user } = useUserContext();
 
-    return (user ? <Navigate to='/'/> : children);
+    return (user ? <Navigate to={'/'} /> : children);
 }

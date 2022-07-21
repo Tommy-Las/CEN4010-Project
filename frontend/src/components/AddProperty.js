@@ -1,8 +1,12 @@
 import React, {useState} from "react" 
 import axios from "axios"
+import { useUserContext } from "../context/userContext";
 
 function AddProperty() {
 
+  const { user } = useUserContext();
+  const user_id = user.uid
+  console.log(user_id)
     //Stores form data
     const [formData, setFormData] = useState({ location: "",
                                                sqft: "",
