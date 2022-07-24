@@ -10,6 +10,7 @@ import Property from './components/Property';
 import AddProperty from './components/AddProperty';
 import DeleteProperty from './components/deleteProperty';
 import Login from './components/Login';
+import ConfirmInformation from './components/ConfirmInformation';
 import PerformLogin from './components/PerformLogin';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
@@ -22,7 +23,6 @@ function App() {
     onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
         setUser(firebaseUser);
-        console.log('user is logged in')  
       } else {
         setUser(null);
       }
@@ -33,6 +33,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element ={<Navigate to='/inventory' />} />
+        <Route path='/confirm' element ={<PrivateRoute><ConfirmInformation/></PrivateRoute>} />
         <Route path='/inventory' element= {<PrivateRoute><Inventory /></PrivateRoute>}/>
         <Route path='/user' element= {<PrivateRoute><User /></PrivateRoute>}/>
         <Route path='/property/:property_id' element= {<PrivateRoute><Property /></PrivateRoute>}/>
