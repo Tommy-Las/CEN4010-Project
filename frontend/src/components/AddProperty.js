@@ -5,6 +5,7 @@ import { useUserContext } from "../context/userContext";
 function AddProperty(props) {
 
     const { user } = useUserContext();
+    //User ID
     const user_id = user.uid;
     console.log(user_id);
     

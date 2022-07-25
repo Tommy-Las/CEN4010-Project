@@ -2,6 +2,10 @@ import React, {useState} from "react"
 import axios from "axios"
 
 function DeleteProperty(){ 
+    const { user } = useUserContext();
+    //User ID
+    const user_id = user.uid;
+
     const [location, setLocation] = useState(""); //Stores submitted location 
 
     //Update location state 
