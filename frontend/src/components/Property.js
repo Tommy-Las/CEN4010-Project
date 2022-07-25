@@ -1,11 +1,13 @@
 import React, {useState} from "react"
 import axios from "axios"
+import { useUserContext } from "../context/userContext";
+
 
 function Property(){ 
     const { user } = useUserContext();
     //User ID
     const user_id = user.uid;
-    
+
     const [location, setLocation] = useState(""); //Stores submitted location 
     const [homeInfo, setHomeInfo] = useState({}); //Stores home information
   
