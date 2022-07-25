@@ -2,7 +2,6 @@ import React, {useState} from "react"
 import axios from "axios"
 import { useUserContext } from "../context/userContext";
 
-
 function DeleteProperty(){ 
     const { user } = useUserContext();
     //User ID

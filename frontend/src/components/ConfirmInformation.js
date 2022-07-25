@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import { useUserContext } from "../context/userContext";
 
-
 export default function ConfirmInformation() {
   const [first_name, setFirstName] = useState('')
   const [last_name, setLastName] = useState('')
