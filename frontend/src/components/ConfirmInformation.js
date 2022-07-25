@@ -19,7 +19,7 @@ export default function ConfirmInformation() {
 }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}> 
       <label >Full Name:</label>
       <input  id="nameInput" value={first_name} onChange={(e) => setFirstName(e.target.value)}></input>
       <input  id="nameInput" value={last_name} onChange={(e) => setLastName(e.target.value)}></input>
