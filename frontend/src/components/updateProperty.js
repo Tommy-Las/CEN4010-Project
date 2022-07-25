@@ -3,9 +3,10 @@ import axios from "axios"
 import { useUserContext } from "../context/userContext";
 
 function UpdateProperty(){ 
-
     const { user } = useUserContext();
+    //User ID
     const user_id = user.uid;
+
     console.log(user_id);
 
     //Stores form data
