@@ -9,7 +9,7 @@ function Navbar(){
     const navigate = useNavigate()
     return (
         <header>
-            <h1 className='title'>West Boca Make-Believe</h1>
+            <h1 id='navbarTitle'>West Boca Make-Believe</h1>
             <nav className='navbar'>
                 {user ?
                 <ul className='nav'>

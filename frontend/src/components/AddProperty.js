@@ -2,8 +2,6 @@ import React, {useState} from "react"
 import axios from "axios"
 import { useUserContext } from "../context/userContext";
 
-
-
 function AddProperty(props) {
 
     const { user } = useUserContext();
@@ -14,9 +12,12 @@ function AddProperty(props) {
     const [formData, setFormData] = useState({ userID: user_id,
                                                propertyID: "",
                                                location: "",
+                                               propertyType: "",
                                                sqft: "",
                                                bedroomCount: "",
                                                bathRoomCount: "",
+                                               units: "",
+                                               estimatedCost: "",
                                                other: "" ,
                                                image1:"",
                                                image2: "",
@@ -87,22 +88,31 @@ function AddProperty(props) {
 
     return ( 
       <div>
-          <form onSubmit={handleSubmit} id="addPropertyForm">
-            <h3 class="center">Add Property Form</h3>
+          <form onSubmit={handleSubmit} class="form">
+            <h3 class="center title">Add Property Form</h3>
             <label htmlFor="location">Location: </label>
-            <input type="text" class="formInput" id="location" name="location" value={formData.location} placeholder="Location" onChange={handleChange} required/>
+            <input type="text" class="formInput" id="location" name="location" value={formData.location} onChange={handleChange} required/>
+            <br />
+            <label htmlFor="propertyType">Property type: </label>
+            <input type="text" class="formInput" id="propertyType" name="propertyType" value={formData.propertyType} onChange={handleChange} />
             <br />
             <label htmlFor="sqft">Sqft: </label>
-            <input type="text" class="formInput" id="sqft" name="sqft" value={formData.sqft} placeholder="Ssqft" onChange={handleChange} />
+            <input type="number" class="formInput" id="sqft" name="sqft" value={formData.sqft} onChange={handleChange} />
+            <br />
+            <label htmlFor="estimatedCost">Estimated cost: </label>
+            <input type="number" class="formInput" id="estimatedCost" name="estimatedCost" value={formData.estimatedCost} onChange={handleChange} />
             <br />
             <label htmlFor="bedroomCount">Number of bedrooms: </label>
-            <input type="text" class="formInput" id="bedroomCount" name="bedroomCount" value={formData.bedroomCount} placeholder="# of bedrooms" onChange={handleChange} />
+            <input type="number" class="formInput" id="bedroomCount" name="bedroomCount" value={formData.bedroomCount} onChange={handleChange} />
             <br />
             <label htmlFor="bathRoomCount">Number of bathrooms: </label>
-            <input type="text" class="formInput" id="bathRoomCount" name="bathRoomCount" value={formData.bathRoomCount} placeholder="# of bathrooms" onChange={handleChange} />
+            <input type="number" class="formInput" id="bathRoomCount" name="bathRoomCount" value={formData.bathRoomCount} onChange={handleChange} />
             <br />
-            <label htmlFor="other">Other details: </label>
-            <textarea class="formInput" id="other" name="other" value={formData.other} placeholder="Other details" onChange={handleChange}></textarea>
+            <label htmlFor="units">Number of units (if applicable): </label>
+            <input type="number" class="formInput" id="units" name="units" value={formData.units} onChange={handleChange} />
+            <br />
+            <label htmlFor="other" >Other details: </label>
+            <textarea class="formInput" id="other" name="other" value={formData.other} onChange={handleChange}></textarea>
             <br />
             <input type="file" id="image1" name="image1" alt="house image #1" accept="image/*" onChange={handleChange} />
             <input type="file" id="image2" name="image2" alt="house image #2" accept="image/*" onChange={handleChange} />

@@ -12,9 +12,12 @@ function UpdateProperty(){
     const [formData, setFormData] = useState({ userID: user_id,
                                                propertyID: "",
                                                location: "",
+                                               propertyType: "",
                                                sqft: "",
                                                bedroomCount: "",
                                                bathRoomCount: "",
+                                               units: "",
+                                               estimatedCost: "",
                                                other: "" ,
                                                image1:"",
                                                image2: "",
@@ -90,19 +93,28 @@ function UpdateProperty(){
     <form onSubmit={handleSubmit}>
         <div>Update Property Form</div>
         <label htmlFor="location">Location: </label>
-        <input type="text" id="location" name="location" value={formData.location} placeholder="Location" onChange={handleChange} required/>
+        <input type="text" id="location" name="location" value={formData.location} onChange={handleChange} required/>
+        <br />
+        <label htmlFor="propertyType">Property type: </label>
+        <input type="text" id="propertyType" name="propertyType" value={formData.propertyType} onChange={handleChange} />
         <br />
         <label htmlFor="sqft">Sqft: </label>
-        <input type="text" id="sqft" name="sqft" value={formData.sqft} placeholder="Ssqft" onChange={handleChange} />
+        <input type="number" id="sqft" name="sqft" value={formData.sqft} onChange={handleChange} />
+        <br />
+        <label htmlFor="estimatedCost">Estimated cost: </label>
+        <input type="number" id="estimatedCost" name="estimatedCost" value={formData.estimatedCost} onChange={handleChange} />
         <br />
         <label htmlFor="bedroomCount">Number of bedrooms: </label>
-        <input type="text" id="bedroomCount" name="bedroomCount" value={formData.bedroomCount} placeholder="# of bedrooms" onChange={handleChange} />
+        <input type="number" id="bedroomCount" name="bedroomCount" value={formData.bedroomCount} onChange={handleChange} />
         <br />
         <label htmlFor="bathRoomCount">Number of bathrooms: </label>
-        <input type="text" id="bathRoomCount" name="bathRoomCount" value={formData.bathRoomCount} placeholder="# of bathrooms" onChange={handleChange} />
+        <input type="number" id="bathRoomCount" name="bathRoomCount" value={formData.bathRoomCount} onChange={handleChange} />
+        <br />
+        <label htmlFor="units">Number of units (if applicable): </label>
+        <input type="number" class="formInput" id="units" name="units" value={formData.units} onChange={handleChange} />
         <br />
         <label htmlFor="other">Other details: </label>
-        <textarea id="other" name="other" value={formData.other} placeholder="Other details" onChange={handleChange}></textarea>
+        <textarea id="other" name="other" value={formData.other} onChange={handleChange}></textarea>
         <br />
             <input type="file" id="image1" name="image1" alt="house image #1" accept="image/*" onChange={handleChange} />
             <input type="file" id="image2" name="image2" alt="house image #2" accept="image/*" onChange={handleChange} />
