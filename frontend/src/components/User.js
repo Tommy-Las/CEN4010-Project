@@ -1,6 +1,10 @@
 import React, {useState} from "react"
+import { useUserContext } from "../context/userContext";
 
 function User(props){ 
+
+    const {user} = useUserContext();
+    const user_id = user.id;
 
     //Stores form data
     const [formData, setFormData] = useState({ name: "",
@@ -9,24 +13,36 @@ function User(props){
                                                address: "",
                                                authorizedUsers: "" })
 
+   const handleSubmit = (e) => {
+        //prevent default submission
+        e.preventDefault();
+   }
+
+    //Stores entered information from form in data
+    function handleChange(e) {
+        setFormData(prevFormData => {
+            return { ...prevFormData, [e.target.name]: e.target.value }
+        })
+        
+    }
     return <div>
-        <form class="form">
+        <form class="form" onSubmit={handleSubmit}>
             <h3 class="center title">Profile</h3>
             <label htmlfor="name">Name: </label>
-            <input type="text" class="formInput" name="name" />
+            <input type="text" class="formInput" name="name" id="name" value={formData.name} onChange={handleChange} />
             <br />
             <label htmlfor="email">Email: </label>
-            <input type="email" class="formInput" name="email" />
+            <input type="email" class="formInput" name="email" id="email" value={formData.email} onChange={handleChange}/>
             <br />
             <label htmlfor="phoneNumber">Phone number: </label>
-            <input type="tel" class="formInput" name="phoneNumber"/>
+            <input type="tel" class="formInput" name="phoneNumber" id="phoneNumber" value={formData.phoneNumber} onChange={handleChange}/>
             <br />
             <label htmlfor="address">Permanent address: </label>
-            <input type="text" class="formInput" name="address"/>
+            <input type="text" class="formInput" name="address" id="address" value={formData.address} onChange={handleChange}/>
             <br />
             <label htmlfor="authorizedUsers">Authorized Users: </label>
-            <input type="text" class="formInput" name="authorizedUsers"/>
-            <button id="profileButton">Submit</button>
+            <input type="text" class="formInput" name="authorizedUsers" id="authorizedUsers" value={formData.authorizedUsers} onChange={handleChange}/>
+            <button id="profileButton">Save</button>
         </form>
         <img class="leftHouseImage" src={props.leftImage} alt="house" />
         <img class="rightHouseImage" src={props.rightImage} alt="house" />
