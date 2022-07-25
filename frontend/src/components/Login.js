@@ -13,6 +13,9 @@ const app = initializeApp(firebaseConfig);
 
 
 function Login(){
+
+    document.getElementById("body").setAttribute("class", "loginBackground"); //Colors the body tag
+
     //email from the user
     const [email, setEmail] = useState('')
     //message displayed on screen
@@ -28,14 +31,17 @@ function Login(){
 
     
 
-    return <div>
-        <form onSubmit={handleSubmit}>
-            <label>Email Address:</label>
-            <input type='email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
-            <button>Send Credentials</button>
-            <p>{message}</p>
-        </form>
-    </div>
+    return (
+        <div class="login center">
+            <h5>Sign In</h5>
+            <form onSubmit={handleSubmit}>
+                <label >Email Address:</label>
+                <input type='email' id="loginInput" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                <button id="loginButton">Send Credentials</button>
+                <p>{message}</p>
+            </form>
+        </div>
+    )
 }
 
 export default Login

@@ -3,14 +3,22 @@
     padding: 0;
 }
 
+body{
+    background-color: #86dcb9;
+
+}
+
 header{
     padding: 18px 15px;
-    background-color: #86dcb9;
+    background-color: white;
     display: flex;
     justify-content: space-between;
     color: black;
 }
 
+.center{
+    text-align: center;
+}
 
 .nav li {
     color: black;
@@ -34,4 +42,78 @@ li a {
 
 .title {
     font-size: 25px;
+}
+
+.login {
+    background-color: white;
+    position: absolute;
+    right: 10%;
+    top: 40%;
+    width: 500px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+#loginButton {
+    padding: 3px;
+    margin-left: 5px;
+    background-color: #86dcb9;
+}
+
+.formInput {
+    margin-left: 3px;
+    margin-bottom: 2px;
+    background-color:#86dcb9;
+}
+
+.loginBackground{
+    background: url("login-background.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+#loginInput{
+    margin-left: 3px;
+}
+
+#addPropertyForm{
+    width: 500px;
+    background-color: white;
+    margin: 20px auto;
+    border: 1px solid black;
+    padding: 30px;
+}
+
+#image1, #image2, #image3 {
+    margin-bottom: 3px;
+}
+
+#addPropertyButton{
+    position: relative;
+    left: 40%;
+    background-color:#86dcb9;
+    padding: 5px;
+}
+
+.leftHouseImage{
+    position: absolute;
+    left:0;
+    bottom: 0;
+    max-width: 40%;
+    height: auto;
+    width: auto; 
+    z-index:-5;
+}
+
+.rightHouseImage{
+    position: absolute;
+    right:0;
+    bottom: 0;
+    max-width:40%;
+    height: auto;
+    width: auto;
+    z-index:-5;
 }

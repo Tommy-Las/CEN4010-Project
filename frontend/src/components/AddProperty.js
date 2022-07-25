@@ -2,13 +2,18 @@ import React, {useState} from "react"
 import axios from "axios"
 import { useUserContext } from "../context/userContext";
 
-function AddProperty() {
 
-  const { user } = useUserContext();
-  const user_id = user.uid
-  console.log(user_id)
+
+function AddProperty(props) {
+
+    const { user } = useUserContext();
+    const user_id = user.uid;
+    console.log(user_id);
+    
     //Stores form data
-    const [formData, setFormData] = useState({ location: "",
+    const [formData, setFormData] = useState({ userID: user_id,
+                                               propertyID: "",
+                                               location: "",
                                                sqft: "",
                                                bedroomCount: "",
                                                bathRoomCount: "",
@@ -81,29 +86,35 @@ function AddProperty() {
 
 
     return ( 
-        <form onSubmit={handleSubmit}>
-            <div>Add Property Form</div>
+      <div>
+          <form onSubmit={handleSubmit} id="addPropertyForm">
+            <h3 class="center">Add Property Form</h3>
             <label htmlFor="location">Location: </label>
-            <input type="text" id="location" name="location" value={formData.location} placeholder="Location" onChange={handleChange} required/>
+            <input type="text" class="formInput" id="location" name="location" value={formData.location} placeholder="Location" onChange={handleChange} required/>
             <br />
             <label htmlFor="sqft">Sqft: </label>
-            <input type="text" id="sqft" name="sqft" value={formData.sqft} placeholder="Ssqft" onChange={handleChange} />
+            <input type="text" class="formInput" id="sqft" name="sqft" value={formData.sqft} placeholder="Ssqft" onChange={handleChange} />
             <br />
             <label htmlFor="bedroomCount">Number of bedrooms: </label>
-            <input type="text" id="bedroomCount" name="bedroomCount" value={formData.bedroomCount} placeholder="# of bedrooms" onChange={handleChange} />
+            <input type="text" class="formInput" id="bedroomCount" name="bedroomCount" value={formData.bedroomCount} placeholder="# of bedrooms" onChange={handleChange} />
             <br />
             <label htmlFor="bathRoomCount">Number of bathrooms: </label>
-            <input type="text" id="bathRoomCount" name="bathRoomCount" value={formData.bathRoomCount} placeholder="# of bathrooms" onChange={handleChange} />
+            <input type="text" class="formInput" id="bathRoomCount" name="bathRoomCount" value={formData.bathRoomCount} placeholder="# of bathrooms" onChange={handleChange} />
             <br />
             <label htmlFor="other">Other details: </label>
-            <textarea id="other" name="other" value={formData.other} placeholder="Other details" onChange={handleChange}></textarea>
+            <textarea class="formInput" id="other" name="other" value={formData.other} placeholder="Other details" onChange={handleChange}></textarea>
             <br />
             <input type="file" id="image1" name="image1" alt="house image #1" accept="image/*" onChange={handleChange} />
             <input type="file" id="image2" name="image2" alt="house image #2" accept="image/*" onChange={handleChange} />
             <input type="file" id="image3" name="image3" alt="house image 31" accept="image/*" onChange={handleChange} />
             <br />
-            <button>Submit</button>
+            <button id="addPropertyButton">Submit</button>
         </form>
+        <img class="leftHouseImage" src={props.leftImage} alt="house" />
+        <img class="rightHouseImage" src={props.rightImage} alt="house" />
+      </div>
+
+       
     )
 }
 

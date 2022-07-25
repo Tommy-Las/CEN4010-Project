@@ -14,7 +14,8 @@ import ConfirmInformation from './components/ConfirmInformation';
 import PerformLogin from './components/PerformLogin';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
-
+import leftHouseImage from "./leftHouse.png"
+import rightHouseImage from "./rightHouse.png"
 function App() {
 
     let auth = getAuth()
@@ -32,12 +33,12 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path='/' element ={<Navigate to='/inventory' />} />
+        <Route path='/' element ={<Navigate to='/inventory'/>} />
         <Route path='/confirm' element ={<PrivateRoute><ConfirmInformation/></PrivateRoute>} />
-        <Route path='/inventory' element= {<PrivateRoute><Inventory /></PrivateRoute>}/>
-        <Route path='/user' element= {<PrivateRoute><User /></PrivateRoute>}/>
+        <Route path='/inventory' element= {<PrivateRoute><Inventory leftImage={leftHouseImage} rightImage={rightHouseImage}/></PrivateRoute>}/>
+        <Route path='/user' element= {<PrivateRoute><User leftImage={leftHouseImage} rightImage={rightHouseImage}/></PrivateRoute>}/>
         <Route path='/property/:property_id' element= {<PrivateRoute><Property /></PrivateRoute>}/>
-        <Route path='/add' element= {<PrivateRoute><AddProperty /></PrivateRoute>}/>
+        <Route path='/add' element= {<PrivateRoute><AddProperty leftImage={leftHouseImage} rightImage={rightHouseImage}/></PrivateRoute>}/>
         <Route path='/delete' element={<PrivateRoute><DeleteProperty/></PrivateRoute>}/>
         <Route path='*' element={<PrivateRoute><NotFound/></PrivateRoute>} />
         <Route path='/login' element ={<PublicRoute><Login /></PublicRoute>} />

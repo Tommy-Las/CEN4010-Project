@@ -1,10 +1,17 @@
 import React, {useState} from "react"
 import axios from "axios"
+import { useUserContext } from "../context/userContext";
 
 function UpdateProperty(){ 
 
+    const { user } = useUserContext();
+    const user_id = user.uid;
+    console.log(user_id);
+
     //Stores form data
-    const [formData, setFormData] = useState({ location: "",
+    const [formData, setFormData] = useState({ userID: user_id,
+                                               propertyID: "",
+                                               location: "",
                                                sqft: "",
                                                bedroomCount: "",
                                                bathRoomCount: "",

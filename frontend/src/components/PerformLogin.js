@@ -5,6 +5,8 @@ import signInWithEmail from "../functions/signInWithEmail";
 
 
 function PerformLogin() {
+  document.getElementById("body").removeAttribute("class"); //Removes login backgroung image
+  
   const navigate = useNavigate()
   const [user_first_time, setUserFirstTime] = useState('')
   
