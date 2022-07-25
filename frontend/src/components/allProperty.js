@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from "react"
 import axios from "axios"
 
-function AllProperty(){ 
+function AllProperty(){
+    const { user } = useUserContext();
+    //User ID
+    const user_id = user.uid; 
+
     const [allHomeInfo, setAllHomeInfo] = useState({}); //Stores all homes info
 
     //Does get request once

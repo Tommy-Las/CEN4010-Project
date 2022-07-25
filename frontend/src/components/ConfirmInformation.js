@@ -6,6 +6,10 @@ export default function ConfirmInformation() {
   const [last_name, setLastName] = useState('')
   const [address, setAddress] = useState('')
 
+  const { user } = useUserContext();
+  //User ID
+  const user_id = user.uid;
+
   const handleSubmit = (e) => {
     //prevent default submission
     e.preventDefault()
@@ -19,7 +23,7 @@ export default function ConfirmInformation() {
       <input  id="nameInput" value={last_name} onChange={(e) => setLastName(e.target.value)}></input>
       <label >Address:</label>
       <input  id="addressInput" value={address} onChange={(e) => setAddress(e.target.value)}></input>
-      <button id="loginButton">Send Credentials</button>
+      <button id="submitButton">Submit</button>
     </form>
   )
 }
