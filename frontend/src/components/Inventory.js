@@ -1,4 +1,10 @@
+import { useUserContext } from "../context/userContext";
+
 function Inventory(props) {
+    const { user } = useUserContext();
+    //User ID
+    const user_id = user.uid;
+
     document.getElementById("body").removeAttribute("class"); //Removes login backgroung image
     document.getElementById("body").setAttribute("class", "generalBackground"); //Colors the body tag
 
