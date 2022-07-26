@@ -29,7 +29,11 @@ function Navbar(){
                 </li>
             </ul>
             :
-            <></>}
+            <ul className='nav'>
+                <li>
+                    <Link to='/admin-login'>Admin</Link>
+                </li>
+            </ul>}
             </nav>
         </header>)
  }

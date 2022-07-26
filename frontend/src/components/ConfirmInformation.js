@@ -6,6 +6,7 @@ export default function ConfirmInformation() {
   const [first_name, setFirstName] = useState('')
   const [last_name, setLastName] = useState('')
   const [address, setAddress] = useState('')
+  const [otherUser, setOtherUser] = useState('')
 
   const { user } = useUserContext();
   //User ID
@@ -14,7 +15,6 @@ export default function ConfirmInformation() {
   const handleSubmit = (e) => {
     //prevent default submission
     e.preventDefault()
-    
 }
 
   return (

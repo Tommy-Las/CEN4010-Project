@@ -14,8 +14,11 @@ import ConfirmInformation from './components/ConfirmInformation';
 import PerformLogin from './components/PerformLogin';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import AdminLogin from './components/AdminLogin';
 import leftHouseImage from "./leftHouse.png"
 import rightHouseImage from "./rightHouse.png"
+import AdminPanel from './components/AdminPanel'
+
 function App() {
 
     let auth = getAuth()
@@ -43,6 +46,8 @@ function App() {
         <Route path='*' element={<PrivateRoute><NotFound/></PrivateRoute>} />
         <Route path='/login' element ={<PublicRoute><Login /></PublicRoute>} />
         <Route path='/verify' element={<PublicRoute><PerformLogin /></PublicRoute>} />
+        <Route path='/admin-login' element ={<PublicRoute><AdminLogin /></PublicRoute>} />
+        <Route path='/admin' element ={<AdminPanel />} />
       </Routes>
     </BrowserRouter>
   );

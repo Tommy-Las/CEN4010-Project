@@ -26,26 +26,26 @@ function User(props){
         
     }
     return <div>
-        <form class="form" onSubmit={handleSubmit}>
-            <h3 class="center title">Profile</h3>
+        <form className="form" onSubmit={handleSubmit}>
+            <h3 className="center title">Profile</h3>
             <label htmlfor="name">Name: </label>
-            <input type="text" class="formInput" name="name" id="name" value={formData.name} onChange={handleChange} />
+            <input type="text" className="formInput" name="name" id="name" value={formData.name} onChange={handleChange} />
             <br />
             <label htmlfor="email">Email: </label>
-            <input type="email" class="formInput" name="email" id="email" value={formData.email} onChange={handleChange}/>
+            <input type="email" className="formInput" name="email" id="email" value={formData.email} onChange={handleChange}/>
             <br />
             <label htmlfor="phoneNumber">Phone number: </label>
-            <input type="tel" class="formInput" name="phoneNumber" id="phoneNumber" value={formData.phoneNumber} onChange={handleChange}/>
+            <input type="tel" className="formInput" name="phoneNumber" id="phoneNumber" value={formData.phoneNumber} onChange={handleChange}/>
             <br />
             <label htmlfor="address">Permanent address: </label>
-            <input type="text" class="formInput" name="address" id="address" value={formData.address} onChange={handleChange}/>
+            <input type="text" className="formInput" name="address" id="address" value={formData.address} onChange={handleChange}/>
             <br />
             <label htmlfor="authorizedUsers">Authorized Users: </label>
-            <input type="text" class="formInput" name="authorizedUsers" id="authorizedUsers" value={formData.authorizedUsers} onChange={handleChange}/>
+            <input type="text" className="formInput" name="authorizedUsers" id="authorizedUsers" value={formData.authorizedUsers} onChange={handleChange}/>
             <button id="profileButton">Save</button>
         </form>
-        <img class="leftHouseImage" src={props.leftImage} alt="house" />
-        <img class="rightHouseImage" src={props.rightImage} alt="house" />
+        <img className="leftHouseImage" src={props.leftImage} alt="house" />
+        <img className="rightHouseImage" src={props.rightImage} alt="house" />
     </div>
  }
 

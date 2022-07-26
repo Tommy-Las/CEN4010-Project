@@ -32,7 +32,7 @@ function Login(){
     
 
     return (
-        <div class="login center">
+        <div className="login center">
             <h5>Sign In</h5>
             <form onSubmit={handleSubmit}>
                 <label >Email Address:</label>
