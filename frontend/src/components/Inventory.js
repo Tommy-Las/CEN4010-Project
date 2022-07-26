@@ -9,8 +9,8 @@ function Inventory(props) {
     document.getElementById("body").setAttribute("class", "generalBackground"); //Colors the body tag
 
     return <div>Home Page - Inventory Page
-        <img class="leftHouseImage" src={props.leftImage} alt="house" />
-        <img class="rightHouseImage" src={props.rightImage} alt="house" />
+        <img className="leftHouseImage" src={props.leftImage} alt="house" />
+        <img className="rightHouseImage" src={props.rightImage} alt="house" />
     </div>
 }
 

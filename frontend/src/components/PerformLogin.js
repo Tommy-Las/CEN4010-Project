@@ -14,10 +14,10 @@ function PerformLogin() {
 
   useEffect(() => {
     signInWithEmail().then((first_time)=>{
-      console.log(first_time)
       if(first_time){
         navigate('/confirm')
       }
+      navigate('/')
     })
    })
   

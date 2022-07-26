@@ -1,17 +1,18 @@
 import {Link} from 'react-router-dom'
-import Logout from './Logout'
+import logout from '../functions/logout'
 import { useNavigate } from 'react-router-dom'
 import { useUserContext } from '../context/userContext'
+import { useAdminContext } from '../context/adminContext'
 
 function Navbar(){ 
-    const { user } = useUserContext();
+    const { user, admin, setAdmin} = useUserContext();
 
     const navigate = useNavigate()
     return (
         <header>
             <h1 id='navbarTitle'>West Boca Make-Believe</h1>
             <nav className='navbar'>
-                {user ?
+                {user && !admin ?
                 <ul className='nav'>
                 <li>
                     <Link to='/inventory'>Inventory</Link>
@@ -23,13 +24,22 @@ function Navbar(){
                     <Link to='/user'>Update User</Link>
                 </li>
                 <li className= 'logout' onClick={() => {
-                    Logout()
+                    logout()
                     navigate("/login")}}>
                     Logout
                 </li>
-            </ul>
-            :
+                </ul>
+            : user && admin ? 
             <ul className='nav'>
+            <li className= 'logout' onClick={() => {
+                logout()
+                navigate("/login")
+                setAdmin(false)
+                }}>
+                Logout
+            </li>
+            </ul>
+            : <ul className='nav'>
                 <li>
                     <Link to='/admin-login'>Admin</Link>
                 </li>

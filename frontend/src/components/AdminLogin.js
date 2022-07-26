@@ -2,10 +2,13 @@ import React from 'react'
 import { useState } from 'react'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom'
+import { useUserContext } from '../context/userContext';
 
 
 export default function AdminLogin() {
     const auth = getAuth();
+
+    const {setAdmin} = useUserContext()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -20,8 +23,7 @@ export default function AdminLogin() {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            console.log('ADMIN LOGGED IN')
-            //TODO - setAdmin(true)
+            setAdmin(true)
             navigate('/admin')
             // ...
         })
