@@ -4,6 +4,7 @@ export const UserContext = createContext();
 
 export function UserContextProvider(props) {
   const [user, setUser] = useState(null);
+  const [admin, setAdmin] = useState(null);
   const value = useMemo(() => ({ user, setUser }), [user]);
 
   return (
