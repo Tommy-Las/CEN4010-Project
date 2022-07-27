@@ -35,8 +35,9 @@ app.get('/', function(req, res){
 
 
 //Get method to return all homes in the database
-app.get('/all', function(req, res){
+app.get('/all/:uid', function(req, res){
   const houseInfo = {}; //Stores outgoing home information
+  const uid = req.params.uid
 
   /*
       Connect to database & return all homes
