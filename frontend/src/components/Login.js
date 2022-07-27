@@ -37,7 +37,7 @@ function Login(){
             <form onSubmit={handleSubmit}>
                 <label >Email Address:</label>
                 <input type='email' id="loginInput" value={email} onChange={(e) => setEmail(e.target.value)}></input>
-                <button id="loginButton">Send Credentials</button>
+                <button className="loginButton">Send Credentials</button>
                 <p>{message}</p>
             </form>
         </div>

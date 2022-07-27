@@ -34,13 +34,13 @@ export default function AdminLogin() {
     }
     return (
         <div className="login center">
-                <h5>Admin</h5>
-                <form onSubmit={handleSubmit}>
-                    <label >Email Address:</label>
-                    <input type='email' id="loginInput" value={email} onChange={(e) => setEmail(e.target.value)}></input>
-                    <label >Password:</label>
-                    <input type='password' id="loginInput" value={password} onChange={(e) => setPassword(e.target.value)}></input>
-                    <button id="loginButton">Sign In</button>
+                <h5 id='admin-title'>Admin</h5>
+                <form onSubmit={handleSubmit} className='container'>
+                    <label className='admin-label'>Email Address:</label>
+                    <input type='email' className="admin-input" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                    <label className='admin-label'>Password:</label>
+                    <input type='password' className="admin-input" value={password} onChange={(e) => setPassword(e.target.value)}></input>
+                    <button className="loginButton">Sign In</button>
                 </form>
         </div>
   )

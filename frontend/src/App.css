@@ -1,16 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Taviraj:wght@200;400&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Taviraj', serif;
 }
 
 body{
-    background-color: #86dcb9;
+    background-color: #dceee7;
 
 }
 
 header{
     padding: 10px 15px;
-    background-color: white;
+    background-color: #64c69f;
     display: flex;
     justify-content: space-between;
     color: black;
@@ -25,6 +28,8 @@ header{
 }
 
 .title{
+    margin-top:-12px;
+    margin-bottom: 12px;
     text-decoration: underline;
 }
 
@@ -58,17 +63,28 @@ li a {
     border: 1px solid black;
 }
 
-#loginButton {
-    padding: 3px;
+.loginButton {
+    padding: 10px 10px;
     margin-left: 5px;
+    margin-top: 12px;
+    margin-bottom: 8px;
     background-color: #86dcb9;
+    border-radius: 100px;
+    border: none;
+    
 }
 
-.formInput {
-    margin-left: 3px;
-    margin-bottom: 2px;
-    background-color:#86dcb9;
+.loginButton:hover{
+    background-color:#9fe4c8 ;
 }
+
+
+.formInput {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    background-color:#e6f4ef;
+    width: 100%;
+}   
 
 .loginBackground{
     background: url("login-background.jpg") no-repeat center center fixed; 
@@ -98,21 +114,29 @@ li a {
 #addPropertyButton{
     position: relative;
     left: 40%;
-    background-color:#86dcb9;
-    padding: 5px;
+    padding: 10px 10px;
+    margin-left: 5px;
+    margin-top: 12px;
+    margin-bottom: 3px;
+    background-color: #86dcb9;
+    border-radius: 100px;
+    border: none;
 }
 
 #other{
     width: 430px;
     height: 100px;
 }
+
 #profileButton{
     display: block;
     margin-top: 5px;
-    left: 40%;
     position: relative;
     background-color:#86dcb9;
-    padding: 5px;
+    padding: 10px 40px;
+    margin-top: 12px;
+    border-radius: 100px;
+    border: none;
 }
 
 .leftHouseImage{
@@ -133,4 +157,28 @@ li a {
     height: auto;
     width: auto;
     z-index:-5;
+}
+
+.logo{
+    height: 60px;
+    margin-left: 40px;
+}
+
+.nav-button:hover{
+    color: rgb(46, 106, 56);
+}
+
+.container {
+    display: inline-block;
+}
+.admin-input{
+    width: 90%;
+}
+
+.admin-label{
+    align-items: left;
+}
+
+#admin-title{
+    margin-bottom: 25px;
 }

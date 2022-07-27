@@ -47,10 +47,10 @@ function App() {
         <Route path='/property/:property_id' element= {<PrivateRoute><Property /></PrivateRoute>}/>
         <Route path='/add' element= {<PrivateRoute><AddProperty leftImage={leftHouseImage} rightImage={rightHouseImage}/></PrivateRoute>}/>
         <Route path='/delete' element={<PrivateRoute><DeleteProperty/></PrivateRoute>}/>
-        <Route path='*' element={<PrivateRoute><NotFound/></PrivateRoute>} />
-        <Route path='/login' element ={<Login />} />
-        <Route path='/verify' element={<PerformLogin />} />
-        <Route path='/admin-login' element ={<AdminLogin />} />
+        <Route path='*' element={<NotFound/>} />
+        <Route path='/login' element ={<PublicRoute><Login /></PublicRoute>} />
+        <Route path='/verify' element={<PublicRoute><PerformLogin /></PublicRoute>} />
+        <Route path='/admin-login' element ={<PublicRoute><AdminLogin /></PublicRoute>} />
         <Route path='/admin' element ={<AdminRoute><AdminPanel /></AdminRoute>} />
       </Routes>
     </BrowserRouter>

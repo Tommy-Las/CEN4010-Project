@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom'
 import logout from '../functions/logout'
 import { useNavigate } from 'react-router-dom'
 import { useUserContext } from '../context/userContext'
-import { useAdminContext } from '../context/adminContext'
+import logo from './logo-cut.png'
 
 function Navbar(){ 
     const { user, admin, setAdmin} = useUserContext();
@@ -10,20 +10,20 @@ function Navbar(){
     const navigate = useNavigate()
     return (
         <header>
-            <h1 id='navbarTitle'>West Boca Make-Believe</h1>
+            <Link to='/'><img className='logo' src={logo} ></img></Link>
             <nav className='navbar'>
                 {user && !admin ?
                 <ul className='nav'>
-                <li>
-                    <Link to='/inventory'>Inventory</Link>
+                <li >
+                    <Link className='nav-button' to='/inventory'>Inventory</Link>
                 </li>
                 <li>
-                    <Link to='/add'>Add Property</Link>
+                    <Link className='nav-button' to='/add'>Add Property</Link>
                 </li>
-                <li>
-                    <Link to='/user'>Update User</Link>
+                <li >
+                    <Link className='nav-button' to='/user'>Update User</Link>
                 </li>
-                <li className= 'logout' onClick={() => {
+                <li className= 'logout nav-button' onClick={() => {
                     logout()
                     navigate("/login")}}>
                     Logout
@@ -31,7 +31,7 @@ function Navbar(){
                 </ul>
             : user && admin ? 
             <ul className='nav'>
-            <li className= 'logout' onClick={() => {
+            <li className= 'logout nav-button' onClick={() => {
                 logout()
                 navigate("/login")
                 setAdmin(false)
@@ -41,7 +41,7 @@ function Navbar(){
             </ul>
             : <ul className='nav'>
                 <li>
-                    <Link to='/admin-login'>Admin</Link>
+                    <Link className='nav-button' to='/admin-login'>Admin</Link>
                 </li>
             </ul>}
             </nav>
