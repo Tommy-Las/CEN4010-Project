@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import axios from "axios"
 import { useUserContext } from "../context/userContext";
+import { useParams } from "react-router-dom";
 
 function Property(props){ 
     const { user } = useUserContext();

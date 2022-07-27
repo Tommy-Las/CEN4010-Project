@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 
+require('dotenv').config()
+
 //Allows cross-origin resource sharing beween client and server
 const corsOptions ={
    origin:'*', 
@@ -102,5 +104,5 @@ app.delete('/', function(req, res){
 })
 
 
-app.listen(8080);
+app.listen(process.env.PORT|| 8080);
 console.log('Server is running...');
