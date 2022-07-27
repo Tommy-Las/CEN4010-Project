@@ -8,7 +8,7 @@ function sendEmail(email) {
         const auth = getAuth();
         
         const actionCodeSettings = {
-            url: 'https://make-believe.netlify.app/login',
+            url: 'https://make-believe.netlify.app/verify',
             handleCodeInApp: true,
         }
 
