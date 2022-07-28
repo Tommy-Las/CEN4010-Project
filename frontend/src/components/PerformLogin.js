@@ -15,7 +15,6 @@ function PerformLogin() {
   useEffect(() => {
     signInWithEmail().then((first_time)=>{
       if(first_time){
-        console.log
         navigate('/confirm')
       }
       else{
