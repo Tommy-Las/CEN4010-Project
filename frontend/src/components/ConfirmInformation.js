@@ -18,13 +18,13 @@ export default function ConfirmInformation() {
 }
 
   return (
-    <form onSubmit={handleSubmit}> 
+    <form onSubmit={handleSubmit} id='form-confirmation'> 
       <label >Full Name:</label>
-      <input  id="nameInput" value={first_name} onChange={(e) => setFirstName(e.target.value)}></input>
-      <input  id="nameInput" value={last_name} onChange={(e) => setLastName(e.target.value)}></input>
+      <input  placeholder='first name' className="name-input" value={first_name} onChange={(e) => setFirstName(e.target.value)}></input>
+      <input  placeholder='last name' className="name-input" value={last_name} onChange={(e) => setLastName(e.target.value)}></input>
       <label >Address:</label>
       <input  id="addressInput" value={address} onChange={(e) => setAddress(e.target.value)}></input>
-      <button id="submitButton">Submit</button>
+      <button id="loginButton">Submit</button>
     </form>
   )
 }

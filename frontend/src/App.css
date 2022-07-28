@@ -182,3 +182,11 @@ li a {
 #admin-title{
     margin-bottom: 25px;
 }
+
+#form-confirmation{
+    padding: 40px 40px
+}
+
+.name-input{
+    margin: 15px 15px;
+}
