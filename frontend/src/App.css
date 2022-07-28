@@ -11,13 +11,6 @@ body{
 
 }
 
-header{
-    padding: 10px 15px;
-    background-color: #64c69f;
-    display: flex;
-    justify-content: space-between;
-    color: black;
-}
 
 .center{
     text-align: center;
@@ -33,8 +26,8 @@ header{
     text-decoration: underline;
 }
 
-.nav li {
-    color: black;
+.nav-button {
+    color: inherit;
     font-size: 17px;
     display: inline-block;
     padding: 0px 5px;
@@ -55,13 +48,12 @@ li a {
 
 .login {
     background-color: white;
-    position: absolute;
-    right: 10%;
-    top: 40%;
-    width: 500px;
+    margin: 100px auto;
+    max-width: 300px;
     padding: 10px;
     border: 1px solid black;
 }
+
 
 .loginButton {
     padding: 10px 10px;
@@ -80,6 +72,7 @@ li a {
 
 
 .formInput {
+    margin: auto;
     margin-left: 10px;
     margin-bottom: 10px;
     background-color:#e6f4ef;
@@ -100,7 +93,7 @@ li a {
 }
 
 .form{
-    width: 500px;
+    max-width: 500px;
     background-color: white;
     margin: 20px auto;
     border: 1px solid black;
@@ -194,4 +187,16 @@ li a {
 #address-input{
     margin-right: 15px;
     margin-left: 8px;
+}
+
+form textarea{
+    max-width: 300px
+}
+
+#navigation-bar{
+    padding: 5px 15px;
+    background-color: #64c69f;
+    display: flex;
+    justify-content: space-between;
+    color: black;
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useUserContext } from "../context/userContext";
+import {useNavigate} from 'react-router-dom'
 
 export default function ConfirmInformation() {
   const [first_name, setFirstName] = useState('')
@@ -9,12 +10,15 @@ export default function ConfirmInformation() {
   const [otherUser, setOtherUser] = useState('')
 
   const { user } = useUserContext();
+  const navigate = useNavigate()
   //User ID
   const user_id = user.uid;
 
   const handleSubmit = (e) => {
     //prevent default submission
     e.preventDefault()
+    navigate('/')
+    
 }
 
   return (

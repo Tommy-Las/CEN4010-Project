@@ -6,9 +6,9 @@ function sendEmail(email) {
     return new Promise((res, rej)=>{
 
         const auth = getAuth();
-        
+        // url: 'https://make-believe.netlify.app/verify'
         const actionCodeSettings = {
-            url: 'https://make-believe.netlify.app/verify',
+            url: 'http://localhost:3000/verify',
             handleCodeInApp: true,
         }
 

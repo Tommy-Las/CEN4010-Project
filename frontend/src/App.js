@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useUserContext } from './context/userContext';
 import Inventory from './components/Inventory'
-import Navbar from './components/Navbar'
+import NavigationBar from './components/NavigationBar'
 import NotFound from './components/NotFound'
 import User from './components/User';
 import Property from './components/Property';
@@ -38,7 +38,7 @@ function App() {
   
   return (
     <BrowserRouter>
-      <Navbar />
+      <NavigationBar />
       <Routes>
         <Route path='/' element ={<Navigate to='/inventory'/>} />
         <Route path='/confirm' element ={<PrivateRoute><ConfirmInformation/></PrivateRoute>} />

@@ -32,7 +32,8 @@ function Login(){
     
 
     return (
-        <div className="login center">
+        <div id='login-container'>
+            <div className="login center">
             <h5>Sign In</h5>
             <form onSubmit={handleSubmit}>
                 <label >Email Address:</label>
@@ -40,6 +41,7 @@ function Login(){
                 <button className="loginButton">Send Credentials</button>
                 <p>{message}</p>
             </form>
+            </div>
         </div>
     )
 }
