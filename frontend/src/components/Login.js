@@ -34,10 +34,10 @@ function Login(){
     return (
         <div id='login-container'>
             <div className="login center">
-            <h5>Sign In</h5>
+            <h5 id='login-title'>Sign In</h5>
             <form onSubmit={handleSubmit}>
                 <label >Email Address:</label>
-                <input type='email' id="loginInput" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                <input type='email' id="login-input" value={email} onChange={(e) => setEmail(e.target.value)}></input>
                 <button className="loginButton">Send Credentials</button>
                 <p>{message}</p>
             </form>

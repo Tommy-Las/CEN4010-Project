@@ -26,15 +26,7 @@ body{
     text-decoration: underline;
 }
 
-.nav-button {
-    color: inherit;
-    font-size: 17px;
-    display: inline-block;
-    padding: 0px 5px;
-    list-style: none;
-    text-decoration: none;
-    margin: 0 17px;
-}
+
 
 li a {
     text-decoration: none;
@@ -88,8 +80,8 @@ li a {
 
 }
 
-#loginInput{
-    margin-left: 3px;
+#login-input{
+    margin-bottom: 5px;
 }
 
 .form{
@@ -157,14 +149,25 @@ li a {
     margin-left: 40px;
 }
 
+.nav-button {
+    color: black !important; 
+    font-size: 17px;
+    display: inline-block;
+    padding: 0px 5px;
+    list-style: none;
+    text-decoration: none;
+    margin: 0 17px;
+}
 .nav-button:hover{
-    color: rgb(46, 106, 56);
+    color: rgb(0, 0, 0) !important;
+    text-shadow: 1px 1px rgb(255, 255, 255);
 }
 
 .container {
     display: inline-block;
 }
 .admin-input{
+    margin-bottom: 10px;
     width: 90%;
 }
 
@@ -195,8 +198,12 @@ form textarea{
 
 #navigation-bar{
     padding: 5px 15px;
-    background-color: #64c69f;
+    background-color: #85deba;
     display: flex;
     justify-content: space-between;
     color: black;
+}
+
+#login-title{
+    margin-bottom: 18px
 }

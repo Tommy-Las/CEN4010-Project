@@ -12,45 +12,6 @@ function NavigationBar(){
     const { user, admin, setAdmin} = useUserContext();
 
     const navigate = useNavigate()
-    
-    // return (
-    //     <header>
-    //         <Link to='/'><img className='logo' src={logo} ></img></Link>
-    //         <nav className='navbar'>
-    //             {user && !admin ?
-    //             <ul className='nav'>
-    //             <li >
-    //                 <Link className='nav-button' to='/inventory'>Inventory</Link>
-    //             </li>
-    //             <li>
-    //                 <Link className='nav-button' to='/add'>Add Property</Link>
-    //             </li>
-    //             <li >
-    //                 <Link className='nav-button' to='/user'>Update User</Link>
-    //             </li>
-    //             <li className= 'logout nav-button' onClick={() => {
-    //                 logout()
-    //                 navigate("/login")}}>
-    //                 Logout
-    //             </li>
-    //             </ul>
-    //         : user && admin ? 
-    //         <ul className='nav'>
-    //         <li className= 'logout nav-button' onClick={() => {
-    //             logout()
-    //             navigate("/login")
-    //             setAdmin(false)
-    //             }}>
-    //             Logout
-    //         </li>
-    //         </ul>
-    //         : <ul className='nav'>
-    //             <li>
-    //                 <Link className='nav-button' to='/admin-login'>Admin</Link>
-    //             </li>
-    //         </ul>}
-    //         </nav>
-    //     </header>)
 
         return (
         <>
@@ -59,7 +20,7 @@ function NavigationBar(){
                 <Navbar.Brand as={Link} to='/' ><img className='logo' src={logo} ></img></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto nav">
+                <Nav className="ms-auto nav">
                     {user && !admin ? 
                     <>
                     <Nav.Link className='nav-button' as={Link} to='/inventory'>Inventory</Nav.Link>
