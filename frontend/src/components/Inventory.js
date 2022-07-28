@@ -13,18 +13,18 @@ function Inventory(props) {
 
 
     useEffect(() => { 
-        axios.get('http://localhost:8080/all/' + user_id).then((res) => { 
-            console.log(res.data)
-            var property_array = res.data.map((property) =>{
-                return(<div>
-                    <p>
-                        <Link to={'/property' + property.id}></Link>
-                    </p>
-                </div>)
-            })
-            setAllHomes(property_array)
-        }
-        )
+        // axios.get('http://localhost:8080/all/' + user_id).then((res) => { 
+        //     console.log(res.data)
+        //     var property_array = res.data.map((property) =>{
+        //         return(<div>
+        //             <p>
+        //                 <Link to={'/property' + property.id}></Link>
+        //             </p>
+        //         </div>)
+        //     })
+        //     setAllHomes(property_array)
+        // }
+        // )
         
      }, [])
 
