@@ -7,12 +7,15 @@ var uri = "mongodb://127.0.0.1:27017/";
 
 require('dotenv').config()
 
+
 //Allows cross-origin resource sharing beween client and server
 const corsOptions ={
    origin:'*', 
    credentials:true,           
    optionSuccessStatus:200,
 }
+
+
 app.use(cors(corsOptions)) 
 
 //Reads and parse incoming requests
