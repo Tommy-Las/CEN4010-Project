@@ -6,9 +6,7 @@ import Inventory from './components/Inventory'
 import NavigationBar from './components/NavigationBar'
 import NotFound from './components/NotFound'
 import User from './components/User';
-import Property from './components/Property';
 import AddProperty from './components/AddProperty';
-import DeleteProperty from './components/deleteProperty';
 import Login from './components/Login';
 import ConfirmInformation from './components/ConfirmInformation';
 import PerformLogin from './components/PerformLogin';
@@ -16,8 +14,8 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import AdminRoute from './components/AdminRoute'
 import AdminLogin from './components/AdminLogin';
-import leftHouseImage from "./leftHouse.png"
-import rightHouseImage from "./rightHouse.png"
+import leftHouseImage from "./rose.webp"
+import rightHouseImage from "./rose.webp"
 import AdminPanel from './components/AdminPanel'
 
 function App() {
@@ -44,9 +42,7 @@ function App() {
         <Route path='/confirm' element ={<PrivateRoute><ConfirmInformation/></PrivateRoute>} />
         <Route path='/inventory' element= {<PrivateRoute><Inventory leftImage={leftHouseImage} rightImage={rightHouseImage}/></PrivateRoute>}/>
         <Route path='/user' element= {<PrivateRoute><User leftImage={leftHouseImage} rightImage={rightHouseImage}/></PrivateRoute>}/>
-        <Route path='/property/:property_id' element= {<PrivateRoute><Property /></PrivateRoute>}/>
         <Route path='/add' element= {<PrivateRoute><AddProperty leftImage={leftHouseImage} rightImage={rightHouseImage}/></PrivateRoute>}/>
-        <Route path='/delete' element={<PrivateRoute><DeleteProperty/></PrivateRoute>}/>
         <Route path='*' element={<NotFound/>} />
         <Route path='/login' element ={<PublicRoute><Login /></PublicRoute>} />
         <Route path='/verify' element={<PublicRoute><PerformLogin /></PublicRoute>} />

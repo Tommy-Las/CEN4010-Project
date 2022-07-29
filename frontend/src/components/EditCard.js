@@ -32,29 +32,14 @@ export default function EditCard(props) {
                   <FileBase64 multiple={false} value={props.image3} onDone = {(base64)=> props.setAllHomeInfo(prevCard => { return prevCard.map((card) => {
                                                                                                           return card._id === props._id ? {...card, "image3": base64} : card }) }) } />
                   <br/>
-                  <label htmlFor="location">Location: </label>
-                  <input type="text" className="formInput" id="location" name="location" defaultValue={props.location} onChange={handleChange} required/>
-                  <br />
-                  <label htmlFor="propertyType">Property type: </label>
-                  <input type="text" id="propertyType" name="propertyType" defaultValue={props.propertyType} onChange={handleChange} />
-                  <br />
-                  <label htmlFor="sqft">Sqft: </label>
-                  <input type="number" id="sqft" name="sqft" defaultValue={props.sqft} onChange={handleChange} />
+                  <label htmlFor="itemType">Type of item: </label>
+                  <input type="text" className="formInput" id="itemType" name="itemType" defaultValue={props.itemType} onChange={handleChange} required/>
                   <br />
                   <label htmlFor="estimatedCost">Estimated cost: </label>
                   <input type="number" id="estimatedCost" name="estimatedCost" defaultValue={props.estimatedCost} onChange={handleChange} />
                   <br />
-                  <label htmlFor="bedroomCount">Number of bedrooms: </label>
-                  <input type="number"  id="bedroomCount" name="bedroomCount" defaultValue={props.bedroomCount} onChange={handleChange} />
-                  <br />
-                  <label htmlFor="bathRoomCount">Number of bathrooms: </label>
-                  <input type="number" id="bathRoomCount" name="bathRoomCount" defaultValue={props.bathRoomCount} onChange={handleChange} />
-                  <br />
-                  <label htmlFor="units">Number of units (if applicable): </label>
-                  <input type="number" id="units" name="units" defaultValue={props.units} onChange={handleChange} />
-                  <br />
-                  <label htmlFor="other" >Other details: </label>
-                  <textarea id="other" name="other" defaultValue={props.other} onChange={handleChange}></textarea>
+                  <label htmlFor="description">Description: </label>
+                  <input type="text" id="description" name="description" defaultValue={props.description} onChange={handleChange} />
                   <br />
               </Card.Text>
               <button  id="updateButton" value={props._id}>Save</button>

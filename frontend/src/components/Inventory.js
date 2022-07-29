@@ -82,10 +82,10 @@ function Inventory(props) {
             axios.put("http://localhost:8080", {update})
             .then(() => {toggle(update._id); })    //If request was successful display success message and refresh page                                   
             .catch(err => {toggle(update._id); //If request was unsuccessful display error message
-                        console.log(err)}); 
+                           console.log(err)}); 
 
        } 
-       
+
     }
 
 
@@ -116,9 +116,10 @@ function Inventory(props) {
     const tableInfo = (property, index) => {
         return(
             <tr key ={index}>
-                <DisplayCard toggle={()=>toggle(property._id)} deleteProperty={()=>deleteProperty(property._id)} setAllHomeInfo={setAllHomeInfo} updateProperty={updateProperty} image1={property.image1} image2={property.image2} image3={property.image3} 
-                                                _id={property._id} location={property.location} propertyType={property.propertyType} sqft={property.sqft} bedroomCount={property.bedroomCount} 
-                                                bathRoomCount={property.bathRoomCount} units={property.units} estimatedCost={property.estimatedCost} other={property.other} editButton={property.editButton} />         
+                <DisplayCard toggle={()=>toggle(property._id)} deleteProperty={()=>deleteProperty(property._id)} setAllHomeInfo={setAllHomeInfo} 
+                                                               updateProperty={updateProperty} image1={property.image1} image2={property.image2} 
+                                                               image3={property.image3} _id={property._id} itemType={property.itemType} description={property.description} 
+                                                               estimatedCost={property.estimatedCost} editButton={property.editButton} />         
             </tr>
         )
     }
