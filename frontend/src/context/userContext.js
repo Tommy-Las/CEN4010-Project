@@ -4,11 +4,12 @@ export const UserContext = createContext();
 
 export function UserContextProvider(props) {
   const [user, setUser] = useState(null);
-  const [admin, setAdmin] = useState(null);
-  const value = useMemo(() => ({ user, setUser }), [user]);
+  const [admin, setAdmin] = useState(false)
+
+  const value = useMemo(() => ({ user, setUser, admin, setAdmin }), [user, admin]);
 
   return (
-    <UserContext.Provider value={value}>{props.children}</UserContext.Provider>
+    <UserContext.Provider value={{ user, setUser, admin, setAdmin }}>{props.children}</UserContext.Provider>
   );
 }
 

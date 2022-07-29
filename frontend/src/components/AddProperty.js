@@ -49,7 +49,7 @@ function AddProperty(props) {
     return ( 
       <div>
           <form onSubmit={handleSubmit} className="form">
-            <h3 className="center title">Add Property Form</h3>
+            <h3 className="center title">Add Your Property</h3>
             <label htmlFor="location">Location: </label>
             <input type="text" className="formInput" id="location" name="location" value={formData.location} onChange={handleChange} required/>
             <br />
@@ -71,8 +71,7 @@ function AddProperty(props) {
             <label htmlFor="units">Number of units (if applicable): </label>
             <input type="number" className="formInput" id="units" name="units" value={formData.units} onChange={handleChange} />
             <br />
-            <label htmlFor="other" >Other details: </label>
-            <textarea className="formInput" id="other" name="other" value={formData.other} onChange={handleChange}></textarea>
+            <textarea placeholder='Other details' className="formInput" id="other" name="other" value={formData.other} onChange={handleChange}></textarea>
             <br />
             <FileBase64 multiple={false} onDone = {(base64)=>{setFormData(prevFormData => {return { ...prevFormData, image1: base64} })}} />
             <FileBase64 multiple={false} onDone = {(base64)=>{setFormData(prevFormData => {return { ...prevFormData, image2: base64} })}} />

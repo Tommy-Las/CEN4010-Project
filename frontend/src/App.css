@@ -1,20 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Taviraj:wght@200;400&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Taviraj', serif;
 }
 
 body{
-    background-color: #86dcb9;
+    background-color: #dceee7;
 
 }
 
-header{
-    padding: 10px 15px;
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
-    color: black;
-}
 
 .center{
     text-align: center;
@@ -25,18 +21,12 @@ header{
 }
 
 .title{
+    margin-top:-12px;
+    margin-bottom: 12px;
     text-decoration: underline;
 }
 
-.nav li {
-    color: black;
-    font-size: 17px;
-    display: inline-block;
-    padding: 0px 5px;
-    list-style: none;
-    text-decoration: none;
-    margin: 0 17px;
-}
+
 
 li a {
     text-decoration: none;
@@ -50,25 +40,36 @@ li a {
 
 .login {
     background-color: white;
-    position: absolute;
-    right: 10%;
-    top: 40%;
-    width: 500px;
+    margin: 100px auto;
+    max-width: 300px;
     padding: 10px;
     border: 1px solid black;
 }
 
-#loginButton {
-    padding: 3px;
+
+.loginButton {
+    padding: 10px 10px;
     margin-left: 5px;
+    margin-top: 12px;
+    margin-bottom: 8px;
     background-color: #86dcb9;
+    border-radius: 100px;
+    border: none;
+    
 }
 
-.formInput {
-    margin-left: 3px;
-    margin-bottom: 2px;
-    background-color:#86dcb9;
+.loginButton:hover{
+    background-color:#9fe4c8 ;
 }
+
+
+.formInput {
+    margin: auto;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    background-color:#e6f4ef;
+    width: 100%;
+}   
 
 .loginBackground{
     background: url("login-background.jpg") no-repeat center center fixed; 
@@ -79,12 +80,12 @@ li a {
 
 }
 
-#loginInput{
-    margin-left: 3px;
+#login-input{
+    margin-bottom: 5px;
 }
 
 .form{
-    width: 500px;
+    max-width: 500px;
     background-color: white;
     margin: 20px auto;
     border: 1px solid black;
@@ -98,21 +99,29 @@ li a {
 #addPropertyButton{
     position: relative;
     left: 40%;
-    background-color:#86dcb9;
-    padding: 5px;
+    padding: 10px 10px;
+    margin-left: 5px;
+    margin-top: 12px;
+    margin-bottom: 3px;
+    background-color: #86dcb9;
+    border-radius: 100px;
+    border: none;
 }
 
 #other{
     width: 430px;
     height: 100px;
 }
+
 #profileButton{
     display: block;
     margin-top: 5px;
-    left: 40%;
     position: relative;
     background-color:#86dcb9;
-    padding: 5px;
+    padding: 10px 40px;
+    margin-top: 12px;
+    border-radius: 100px;
+    border: none;
 }
 
 .leftHouseImage{
@@ -133,4 +142,68 @@ li a {
     height: auto;
     width: auto;
     z-index:-5;
+}
+
+.logo{
+    height: 60px;
+    margin-left: 20px;
+}
+
+.nav-button {
+    color: black !important; 
+    font-size: 17px;
+    display: inline-block;
+    padding: 0px 5px;
+    list-style: none;
+    text-decoration: none;
+    margin: 0 17px;
+}
+.nav-button:hover{
+    color: rgb(0, 0, 0) !important;
+    text-shadow: 1px 1px rgb(255, 255, 255);
+}
+
+.container {
+    display: inline-block;
+}
+.admin-input{
+    margin-bottom: 10px;
+    width: 90%;
+}
+
+.admin-label{
+    align-items: left;
+}
+
+#admin-title{
+    margin-bottom: 25px;
+}
+
+#form-confirmation{
+    padding: 40px 40px
+}
+
+.name-input{
+    margin: 15px 15px;
+}
+
+#address-input{
+    margin-right: 15px;
+    margin-left: 8px;
+}
+
+form textarea{
+    max-width: 300px
+}
+
+#navigation-bar{
+    padding: 5px 15px;
+    background-color: #85deba;
+    display: flex;
+    justify-content: space-between;
+    color: black;
+}
+
+#login-title{
+    margin-bottom: 18px
 }

@@ -5,6 +5,8 @@ const MongoClient = require('mongodb').MongoClient;
 var uri = "mongodb://127.0.0.1:27017/";
 
 
+require('dotenv').config()
+
 //Allows cross-origin resource sharing beween client and server
 const corsOptions ={
    origin:'*', 
@@ -133,5 +135,5 @@ app.delete('/', function(req, res){
 })
 
 
-app.listen(8080);
+app.listen(process.env.PORT|| 8080);
 console.log('Server is running...');

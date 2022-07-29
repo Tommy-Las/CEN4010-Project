@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useUserContext } from './context/userContext';
 import Inventory from './components/Inventory'
-import Navbar from './components/Navbar'
+import NavigationBar from './components/NavigationBar'
 import NotFound from './components/NotFound'
 import User from './components/User';
 import Property from './components/Property';
@@ -14,6 +14,7 @@ import ConfirmInformation from './components/ConfirmInformation';
 import PerformLogin from './components/PerformLogin';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import AdminRoute from './components/AdminRoute'
 import AdminLogin from './components/AdminLogin';
 import leftHouseImage from "./leftHouse.png"
 import rightHouseImage from "./rightHouse.png"
@@ -22,10 +23,13 @@ import AdminPanel from './components/AdminPanel'
 function App() {
 
     let auth = getAuth()
-    const { setUser } = useUserContext();
+    const {setUser, setAdmin } = useUserContext();
 
     onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
+        if(firebaseUser.uid === 'QTNabZEzZaYKsDpHIgBI1xwDXAI3'){
+          setAdmin(true)
+        }
         setUser(firebaseUser);
       } else {
         setUser(null);
@@ -34,7 +38,7 @@ function App() {
   
   return (
     <BrowserRouter>
-      <Navbar />
+      <NavigationBar />
       <Routes>
         <Route path='/' element ={<Navigate to='/inventory'/>} />
         <Route path='/confirm' element ={<PrivateRoute><ConfirmInformation/></PrivateRoute>} />
@@ -43,11 +47,11 @@ function App() {
         <Route path='/property/:property_id' element= {<PrivateRoute><Property /></PrivateRoute>}/>
         <Route path='/add' element= {<PrivateRoute><AddProperty leftImage={leftHouseImage} rightImage={rightHouseImage}/></PrivateRoute>}/>
         <Route path='/delete' element={<PrivateRoute><DeleteProperty/></PrivateRoute>}/>
-        <Route path='*' element={<PrivateRoute><NotFound/></PrivateRoute>} />
+        <Route path='*' element={<NotFound/>} />
         <Route path='/login' element ={<PublicRoute><Login /></PublicRoute>} />
         <Route path='/verify' element={<PublicRoute><PerformLogin /></PublicRoute>} />
         <Route path='/admin-login' element ={<PublicRoute><AdminLogin /></PublicRoute>} />
-        <Route path='/admin' element ={<AdminPanel />} />
+        <Route path='/admin' element ={<AdminRoute><AdminPanel /></AdminRoute>} />
       </Routes>
     </BrowserRouter>
   );

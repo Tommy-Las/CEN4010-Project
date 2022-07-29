@@ -1,11 +1,14 @@
 import React, {useState} from "react"
 import axios from "axios"
 import { useUserContext } from "../context/userContext";
+import { useParams } from "react-router-dom";
 
-function Property(){ 
+function Property(props){ 
     const { user } = useUserContext();
     //User ID
     const user_id = user.uid;
+
+    const { propery_id } = useParams()
 
     const [location, setLocation] = useState(""); //Stores submitted location 
     const [homeInfo, setHomeInfo] = useState({}); //Stores home information

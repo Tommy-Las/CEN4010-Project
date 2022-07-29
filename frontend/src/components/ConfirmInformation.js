@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useUserContext } from "../context/userContext";
+import {useNavigate} from 'react-router-dom'
 
 export default function ConfirmInformation() {
   const [first_name, setFirstName] = useState('')
@@ -9,22 +10,26 @@ export default function ConfirmInformation() {
   const [otherUser, setOtherUser] = useState('')
 
   const { user } = useUserContext();
+  const navigate = useNavigate()
   //User ID
   const user_id = user.uid;
 
   const handleSubmit = (e) => {
     //prevent default submission
     e.preventDefault()
+    navigate('/')
+    
 }
 
   return (
-    <form onSubmit={handleSubmit}> 
+    <form onSubmit={handleSubmit} id='form-confirmation'>
+      <h1>Enter your information</h1>
       <label >Full Name:</label>
-      <input  id="nameInput" value={first_name} onChange={(e) => setFirstName(e.target.value)}></input>
-      <input  id="nameInput" value={last_name} onChange={(e) => setLastName(e.target.value)}></input>
+      <input  placeholder='first name' className="name-input" value={first_name} onChange={(e) => setFirstName(e.target.value)}></input>
+      <input  placeholder='last name' className="name-input" value={last_name} onChange={(e) => setLastName(e.target.value)}></input>
       <label >Address:</label>
-      <input  id="addressInput" value={address} onChange={(e) => setAddress(e.target.value)}></input>
-      <button id="submitButton">Submit</button>
+      <input  id="address-input" value={address} onChange={(e) => setAddress(e.target.value)}></input>
+      <button className="loginButton">Submit</button>
     </form>
   )
 }
