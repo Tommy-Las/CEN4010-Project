@@ -23,7 +23,7 @@ import AdminPanel from './components/AdminPanel'
 function App() {
 
     let auth = getAuth()
-    const {setUser, setAdmin } = useUserContext();
+    const {user, setUser, admin, setAdmin } = useUserContext();
 
     onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
@@ -40,7 +40,7 @@ function App() {
     <BrowserRouter>
       <NavigationBar />
       <Routes>
-        <Route path='/' element ={<Navigate to='/inventory'/>} />
+        <Route path='/' element ={user ? <Navigate to='/inventory'/> : <Navigate to='/login'/>} />
         <Route path='/confirm' element ={<PrivateRoute><ConfirmInformation/></PrivateRoute>} />
         <Route path='/inventory' element= {<PrivateRoute><Inventory leftImage={leftHouseImage} rightImage={rightHouseImage}/></PrivateRoute>}/>
         <Route path='/user' element= {<PrivateRoute><User leftImage={leftHouseImage} rightImage={rightHouseImage}/></PrivateRoute>}/>
