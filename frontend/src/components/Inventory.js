@@ -11,7 +11,6 @@ function Inventory(props) {
     const { user } = useUserContext();
     const user_id = user.uid;
 
-<<<<<<< HEAD
     console.log(user_id);
 
     //Stores all homes info
@@ -129,13 +128,5 @@ function Inventory(props) {
         <img className="rightHouseImage" src={props.rightImage} alt="house" />
         </div>
     )
-=======
-
-    return <div>Home Page - Inventory Page
-        <div>{allHomes}</div>
-        <img className="leftHouseImage" src={props.leftImage} alt="house" />
-        <img className="rightHouseImage" src={props.rightImage} alt="house" />
-    </div>
->>>>>>> 8f962b4dcb8fcea4ee8a7439817c926682282afa
 }
 export default Inventory
