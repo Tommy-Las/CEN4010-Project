@@ -44,7 +44,8 @@ function AddProperty(props) {
         axios.post("http://localhost:8080/", {formData})
         .then(() => { alert("Success: Home added."); //If request was successful show good alert and refresh page 
                       document.location.reload(); }) 
-        .catch(() => alert("Error: Total image size exceeds 75KB "));  //If request was unsuccessful show error message 
+        .catch(() => {alert("Error: Total image size exceeds 75KB ");
+                      document.location.reload();});  //If request was unsuccessful show error message 
         
     }
   
