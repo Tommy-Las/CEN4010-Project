@@ -28,6 +28,7 @@ function AddProperty(props) {
 
     //Updates the state formData 
     function handleChange (event) {
+
         const {name, value} = event.target;
         setFormData((prevData) => { return({...prevData, [name]: value})  });
   
@@ -36,13 +37,15 @@ function AddProperty(props) {
 
     //Does post request after submitting the form
     function handleSubmit (event) {
+
         event.preventDefault(); //Stops the page from refreshing after pressing the submit button
 
         //Performs post method to add a new home to the database
         axios.post("http://localhost:8080/", {formData})
-        .then(() => { alert("Home added."); //If request was successful show good alert and refresh page 
+        .then(() => { alert("Success: Home added."); //If request was successful show good alert and refresh page 
                       document.location.reload(); }) 
-        .catch(() => alert("Error: Home not added."));  //If request was unsuccessful show bad alert
+        .catch(() => alert("Error: Total image size exceeds 75KB "));  //If request was unsuccessful show error message 
+        
     }
   
 
