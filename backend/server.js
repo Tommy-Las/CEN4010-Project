@@ -10,9 +10,9 @@ require('dotenv').config()
 
 //Allows cross-origin resource sharing beween client and server
 const corsOptions ={
-   origin:'*', 
-   credentials:true,           
-   optionSuccessStatus:200,
+  origin: "https://make-believe.netlify.app",
+  credentials:true,           
+  optionSuccessStatus:200,
 }
 
 
@@ -22,21 +22,21 @@ app.use(cors(corsOptions))
 app.use(express.urlencoded({extended: true})); 
 app.use(express.json()); 
 
-app.use(function (req, res, next) {
+// app.use(function (req, res, next) {
 
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'https://make-believe.netlify.app');
+//   // Website you wish to allow to connect
+//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//   // Request methods you wish to allow
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization');
+//   // Request headers you wish to allow
+//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization');
 
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true);
-});
+//   // Set to true if you need the website to include cookies in the requests sent
+//   // to the API (e.g. in case you use sessions)
+//   res.setHeader('Access-Control-Allow-Credentials', true);
+// });
 
 
 //Post method to add a new home to the inventory
