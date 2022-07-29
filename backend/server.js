@@ -4,9 +4,6 @@ const cors = require("cors");
 const MongoClient = require('mongodb').MongoClient;
 var uri = "mongodb://127.0.0.1:27017/";
 
-
-require('dotenv').config()
-
 //Allows cross-origin resource sharing beween client and server
 const corsOptions ={
    origin:'*', 
@@ -50,7 +47,7 @@ app.post('/', function(req, res){
 })
 
 
-//Get method to return all homes in the database
+//Get method to return all homes in the database 
 app.get('/all', function(req, res){
 
   //Connects to MongoDB server
@@ -70,6 +67,40 @@ app.get('/all', function(req, res){
   });
 
 })
+
+
+//Get method to return all homes for specified user 
+app.get('/', function(req, res){
+  //Creates variables used to store submitted data
+  var userID = req.query.userID;
+  console.log(userID)
+
+  //Connects to MongoDB server
+  MongoClient.connect(uri, { useUnifiedTopology: true }, function(err, client) {
+    if (err) throw err; //Throws error if method failed to connect to server
+
+    var dbo = client.db("westBocaMakeBelieve"); //Creates/links database
+    let query = { "userID": userID}; //Used to filter search for specified items
+
+    //Searches through inventory to find specified record
+    dbo.collection("inventory").find(query).toArray(function(err, response) {
+      if (err) throw err; //Throws error if method failed to search through the collection
+      else if(response.length == 0){ //If no property is found return error message
+          client.close();
+          console.log("No Property found");
+          return res.status(400).send(response);       
+      }
+      else{ //If document is found return it
+        client.close();
+        console.log("Found Inventory");
+        return res.status(200).send(response);
+      }
+      });   
+  });
+
+})
+
+
 
 //Put method to update information from a home already in the database
 app.put('/', function(req, res){
