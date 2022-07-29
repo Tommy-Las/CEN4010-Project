@@ -28,19 +28,19 @@ function User(props){
     return <div>
         <form className="form" onSubmit={handleSubmit}>
             <h3 className="center title">Profile</h3>
-            <label htmlfor="name">Name: </label>
+            <label htmlFor="name">Name: </label>
             <input type="text" className="formInput" name="name" id="name" value={formData.name} onChange={handleChange} />
             <br />
-            <label htmlfor="email">Email: </label>
+            <label htmlFor="email">Email: </label>
             <input type="email" className="formInput" name="email" id="email" value={formData.email} onChange={handleChange}/>
             <br />
-            <label htmlfor="phoneNumber">Phone number: </label>
+            <label htmlFor="phoneNumber">Phone number: </label>
             <input type="tel" className="formInput" name="phoneNumber" id="phoneNumber" value={formData.phoneNumber} onChange={handleChange}/>
             <br />
-            <label htmlfor="address">Permanent address: </label>
+            <label htmlFor="address">Permanent address: </label>
             <input type="text" className="formInput" name="address" id="address" value={formData.address} onChange={handleChange}/>
             <br />
-            <label htmlfor="authorizedUsers">Authorized Users: </label>
+            <label htmlFor="authorizedUsers">Authorized Users: </label>
             <input type="text" className="formInput" name="authorizedUsers" id="authorizedUsers" value={formData.authorizedUsers} onChange={handleChange}/>
             <button id="profileButton">Save</button>
         </form>

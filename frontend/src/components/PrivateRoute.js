@@ -6,5 +6,5 @@ export default function PrivateRoute({children}) {
     
     const { user } = useUserContext();
 
-    return (user ? children : <Navigate to='/login'/>);
+    return (user && children);
 }

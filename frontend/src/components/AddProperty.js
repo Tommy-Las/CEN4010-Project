@@ -1,17 +1,17 @@
 import React, {useState} from "react" 
 import axios from "axios"
+import FileBase64 from "react-file-base64"
 import { useUserContext } from "../context/userContext";
 
 function AddProperty(props) {
 
-    const { user } = useUserContext();
     //User ID
+    const { user } = useUserContext();
     const user_id = user.uid;
-    console.log(user_id);
-    
+ 
     //Stores form data
     const [formData, setFormData] = useState({ userID: user_id,
-                                               propertyID: "",
+                                               _id: "",
                                                location: "",
                                                propertyType: "",
                                                sqft: "",
@@ -22,47 +22,21 @@ function AddProperty(props) {
                                                other: "" ,
                                                image1:"",
                                                image2: "",
-                                               image3: ""   });
+                                               image3: "" ,
+                                               editButton: true  });
+
+
     //Updates the state formData 
     function handleChange (event) {
-        const {name, value, files} = event.target;
-
-        if(name === "image1"){ 
-          setFormData((prevData) => {
-            return {...prevData, [name]: files[0]}
-          })
-        }
-        else if(name === "image2"){
-          setFormData((prevData) => {
-            return {...prevData, [name]: files[0]}
-          })
-        }
-        else if(name === "image3"){
-          setFormData((prevData) => {
-            return {...prevData, [name]: files[0]}
-          })
-        }
-        else{
-          setFormData((prevData) => {
-          return({...prevData, [name]: value})  });
-        }
+        const {name, value} = event.target;
+        setFormData((prevData) => { return({...prevData, [name]: value})  });
+  
     }
+
 
     //Does post request after submitting the form
     function handleSubmit (event) {
         event.preventDefault(); //Stops the page from refreshing after pressing the submit button
-
-        //Renders images url
-        if(formData.image1 !== ""){
-          renderFile(formData.image1, 1)
-        }
-        if(formData.image2 !== ""){
-          renderFile(formData.image2, 2)
-          console.log('2')
-        }
-        if(formData.image3 !== ""){
-          renderFile(formData.image3, 3)
-        }
 
         //Performs post method to add a new home to the database
         axios.post("http://localhost:8080/", {formData})
@@ -70,22 +44,7 @@ function AddProperty(props) {
                       document.location.reload(); }) 
         .catch(() => alert("Error: Home not added."));  //If request was unsuccessful show bad alert
     }
-
-    //Render images to display on screen
-    function renderFile(image, num){
-      const name = 'image' + num;
-    
-      if(image){
-        const reader = new FileReader();
-        reader.onloadend = () =>{
-          setFormData((prevData) =>{
-            return {...prevData, [name]: reader.result}
-          });
-        }
-        reader.readAsDataURL(image);
-      }
-    }
-
+  
 
     return ( 
       <div>
@@ -115,9 +74,9 @@ function AddProperty(props) {
             <label htmlFor="other" >Other details: </label>
             <textarea className="formInput" id="other" name="other" value={formData.other} onChange={handleChange}></textarea>
             <br />
-            <input type="file" id="image1" name="image1" alt="house image #1" accept="image/*" onChange={handleChange} />
-            <input type="file" id="image2" name="image2" alt="house image #2" accept="image/*" onChange={handleChange} />
-            <input type="file" id="image3" name="image3" alt="house image 31" accept="image/*" onChange={handleChange} />
+            <FileBase64 multiple={false} onDone = {(base64)=>{setFormData(prevFormData => {return { ...prevFormData, image1: base64} })}} />
+            <FileBase64 multiple={false} onDone = {(base64)=>{setFormData(prevFormData => {return { ...prevFormData, image2: base64} })}} />
+            <FileBase64 multiple={false} onDone = {(base64)=>{setFormData(prevFormData => {return { ...prevFormData, image3: base64} })}} />
             <br />
             <button id="addPropertyButton">Submit</button>
         </form>
