@@ -41,7 +41,7 @@ function AddProperty(props) {
         event.preventDefault(); //Stops the page from refreshing after pressing the submit button
 
         //Performs post method to add a new home to the database
-        axios.post("https://cen4010.herokuapp.com/", {formData})
+        axios.post("https://cen4010.herokuapp.com", {formData})
         .then(() => { alert("Success: Home added."); //If request was successful show good alert and refresh page 
                       document.location.reload(); }) 
         .catch(() => {alert("Error: Total image size exceeds 75KB ");
