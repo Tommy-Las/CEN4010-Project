@@ -128,7 +128,7 @@ li a {
     position: absolute;
     left:0;
     bottom: 0;
-    max-width: 40%;
+    max-width: 35%;
     height: auto;
     width: auto; 
     z-index:-5;
@@ -138,7 +138,7 @@ li a {
     position: absolute;
     right:0;
     bottom: 0;
-    max-width: 40%;
+    max-width: 35%;
     height: auto;
     width: auto;
     z-index:-5;

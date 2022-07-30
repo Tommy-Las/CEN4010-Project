@@ -17,7 +17,7 @@ function NavigationBar(){
         <>
         <Navbar expand="lg" id='navigation-bar'>
             <Container>
-                <Navbar.Brand as={Link} to='/' ><img className='logo' src={logo} ></img></Navbar.Brand>
+                <Navbar.Brand as={Link} to='/' ><img className='logo' alt="logo" src={logo} ></img></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto nav">
@@ -25,7 +25,7 @@ function NavigationBar(){
                     <>
                     <Nav.Link className='nav-button' as={Link} to='/inventory'>Inventory</Nav.Link>
                     <Nav.Link className='nav-button' as={Link} to='/add'>Add Property</Nav.Link>
-                    <Nav.Link className='nav-button' as={Link} to='/user'>User</Nav.Link>
+                    <Nav.Link className='nav-button' as={Link} to='/user'>Profile</Nav.Link>
                     <Nav.Link className='nav-button' onClick={()=>{
                         logout()
                         navigate("/login")

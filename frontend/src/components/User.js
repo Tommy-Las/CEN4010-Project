@@ -1,22 +1,36 @@
 import React, {useState} from "react"
+import axios from "axios"
 import { useUserContext } from "../context/userContext";
 
 function User(props){ 
 
+    //Stores user ID
     const {user} = useUserContext();
     const user_id = user.id;
 
     //Stores form data
-    const [formData, setFormData] = useState({ name: "",
+    const [formData, setFormData] = useState({ userID: user_id, 
+                                               name: "",
                                                email: "",
                                                phoneNumber: "",
                                                address: "",
                                                authorizedUsers: "" })
 
-   const handleSubmit = (e) => {
-        //prevent default submission
-        e.preventDefault();
-   }
+                                               
+    //Does post request after submitting the form
+    function handleSubmit (event) {
+        
+        event.preventDefault(); //Stops the page from refreshing after pressing the submit button
+
+        //Performs post method to add a new home to the database
+        axios.post("https://cen4010.herokuapp.com", {formData})
+        .then(() => { alert("Success: Home added."); //If request was successful show good alert and refresh page 
+                      document.location.reload(); }) 
+        .catch(() => {alert("Error: Total image size exceeds 75KB ");
+                      document.location.reload();});  //If request was unsuccessful show error message 
+        
+    } 
+
 
     //Stores entered information from form in data
     function handleChange(e) {
