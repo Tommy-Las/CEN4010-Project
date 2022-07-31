@@ -10,7 +10,7 @@ require('dotenv').config()
 
 //Allows cross-origin resource sharing beween client and server
 const corsOptions ={
-  origin: "https://make-believe.netlify.app",
+  origin: "*",
   credentials:true,           
   optionSuccessStatus:200,
 }

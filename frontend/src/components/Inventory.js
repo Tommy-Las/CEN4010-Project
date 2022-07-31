@@ -115,23 +115,20 @@ function Inventory(props) {
     //Creates table rows for to display each property in inventory
     const tableInfo = (property, index) => {
         return(
-            <tr key ={index}>
+            <div key ={index}>
                 <DisplayCard toggle={()=>toggle(property._id)} deleteProperty={()=>deleteProperty(property._id)} setAllHomeInfo={setAllHomeInfo} 
                                                                updateProperty={updateProperty} image1={property.image1} image2={property.image2} 
                                                                image3={property.image3} _id={property._id} itemType={property.itemType} description={property.description} 
                                                                estimatedCost={property.estimatedCost} editButton={property.editButton} />         
-            </tr>
+            </div>
         )
     }
     
     return (
             <div>        
-                {/*Table*/}
-                <table>
-                    <tbody>
-                        {(allHomeInfo.length === 0) ? <div>Empty Inventory</div> : allHomeInfo.map(tableInfo)}
-                    </tbody>
-                </table>
+                <div id='main-container'>
+                    {(allHomeInfo.length === 0) ? <div>Empty Inventory</div> : allHomeInfo.map(tableInfo)}
+                </div>
                 <img className="leftHouseImage" src={props.leftImage} alt="house" />
                 <img className="rightHouseImage" src={props.rightImage} alt="house" />
             </div>

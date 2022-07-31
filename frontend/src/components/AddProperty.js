@@ -14,10 +14,9 @@ function AddProperty(props) {
                                                _id: "",
                                                itemType: "",
                                                estimatedCost: "",
+                                               quantity: "",
                                                description: "" ,
                                                image1:"",
-                                               image2: "",
-                                               image3: "",
                                                editButton: true          });
 
     //Updates the state formData 
@@ -33,9 +32,10 @@ function AddProperty(props) {
     function handleSubmit (event) {
 
         event.preventDefault(); //Stops the page from refreshing after pressing the submit button
-
+        //https://cen4010.herokuapp.com
+        //http://localhost:8080
         //Performs post method to add a new home to the database
-        axios.post("https://cen4010.herokuapp.com", {formData})
+        axios.post("http://localhost:8080", {formData})
         .then(() => { alert("Success: Home added."); //If request was successful show good alert and refresh page 
                       document.location.reload(); }) 
         .catch(() => {alert("Error: Total image size exceeds 75KB ");
@@ -54,12 +54,14 @@ function AddProperty(props) {
             <label htmlFor="estimatedCost">Estimated cost: </label>
             <input type="text" className="formInput" id="estimatedCost" name="estimatedCost" value={formData.estimatedCost} onChange={handleChange} />
             <br />
+            <label htmlFor="estimatedCost">Quantity: </label>
+            <input type="text" className="formInput" id="quantity" name="quantity" value={formData.quantity} onChange={handleChange} />
+            <br>
+            </br>
             <label htmlFor="description">Description: </label>
             <textarea className="formInput" id="description" name="description" value={formData.description} onChange={handleChange}></textarea>
             <br />
             <FileBase64 multiple={false} onDone = {(base64)=>{setFormData(prevFormData => {return { ...prevFormData, image1: base64} })}} />
-            <FileBase64 multiple={false} onDone = {(base64)=>{setFormData(prevFormData => {return { ...prevFormData, image2: base64} })}} />
-            <FileBase64 multiple={false} onDone = {(base64)=>{setFormData(prevFormData => {return { ...prevFormData, image3: base64} })}} />
             <br />
             <button id="addPropertyButton">Submit</button>
         </form>
