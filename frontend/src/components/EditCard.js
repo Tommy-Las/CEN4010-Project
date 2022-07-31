@@ -20,31 +20,32 @@ export default function EditCard(props) {
 
         
   return (
+    <>
       <Card.Body>
           <form onSubmit={props.updateProperty}>
               <Card.Text>
-                  <FileBase64 multiple={false} defaultValue={props.image1} onDone = {(base64)=> props.setAllHomeInfo(prevCard => { return prevCard.map((card) => {
-                                                                                                          return card._id === props._id ? {...card, "image1": base64} : card  }) }) } />
-                  <br/>
-                  <FileBase64 multiple={false} value={props.image2} onDone = {(base64)=> props.setAllHomeInfo(prevCard => { return prevCard.map((card) => {
-                                                                                                          return card._id === props._id ? {...card, "image2": base64} : card }) }) } />
-                  <br/>
-                  <FileBase64 multiple={false} value={props.image3} onDone = {(base64)=> props.setAllHomeInfo(prevCard => { return prevCard.map((card) => {
-                                                                                                          return card._id === props._id ? {...card, "image3": base64} : card }) }) } />
                   <br/>
                   <label htmlFor="itemType">Type of item: </label>
-                  <input type="text" className="formInput" id="itemType" name="itemType" defaultValue={props.itemType} onChange={handleChange} required/>
+                  <input type="text" className="formInput  edit-input" name="itemType" defaultValue={props.itemType} onChange={handleChange} required/>
                   <br />
                   <label htmlFor="estimatedCost">Estimated cost: </label>
-                  <input type="number" id="estimatedCost" name="estimatedCost" defaultValue={props.estimatedCost} onChange={handleChange} />
+                  <input type="number" className="formInput edit-input" name="estimatedCost" defaultValue={props.estimatedCost} onChange={handleChange} />
+                  <br />
+                  <label htmlFor="description">Quantity: </label>
+                  <input type="text" className="formInput edit-input" name="description" defaultValue={props.quantity} onChange={handleChange} />
                   <br />
                   <label htmlFor="description">Description: </label>
-                  <input type="text" id="description" name="description" defaultValue={props.description} onChange={handleChange} />
+                  <input type="text" className="formInput edit-input" name="description" defaultValue={props.description} onChange={handleChange} />
                   <br />
+                  <h5>Image</h5>
+                  <FileBase64 multiple={false} defaultValue={props.image1} onDone = {(base64)=> props.setAllHomeInfo(prevCard => { return prevCard.map((card) => {                                                                                  return card._id === props._id ? {...card, "image1": base64} : card  }) }) } />
               </Card.Text>
-              <button  id="updateButton" value={props._id}>Save</button>
-              <Button onClick={props.deleteProperty} type="button" id="deleteButton" variant="primary" value={props._id}>Delete</Button>
+              
           </form>
       </Card.Body>
+      <Card.Footer className='card-footer'>
+        <button className='loginButton' value={props._id}>Save</button>
+      </Card.Footer>
+    </>
   )
 }

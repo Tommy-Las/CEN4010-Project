@@ -36,7 +36,7 @@ function AddProperty(props) {
         //http://localhost:8080
         //Performs post method to add a new home to the database
         axios.post("http://localhost:8080", {formData})
-        .then(() => { alert("Success: Home added."); //If request was successful show good alert and refresh page 
+        .then(() => { alert("Success: Property added."); //If request was successful show good alert and refresh page 
                       document.location.reload(); }) 
         .catch(() => {alert("Error: Total image size exceeds 75KB ");
                       document.location.reload();});  //If request was unsuccessful show error message 
@@ -54,11 +54,12 @@ function AddProperty(props) {
             <label htmlFor="estimatedCost">Estimated cost: </label>
             <input type="text" className="formInput" id="estimatedCost" name="estimatedCost" value={formData.estimatedCost} onChange={handleChange} />
             <br />
-            <label htmlFor="estimatedCost">Quantity: </label>
+            <label htmlFor="quantity">Quantity: </label>
             <input type="text" className="formInput" id="quantity" name="quantity" value={formData.quantity} onChange={handleChange} />
             <br>
             </br>
             <label htmlFor="description">Description: </label>
+            <br />
             <textarea className="formInput" id="description" name="description" value={formData.description} onChange={handleChange}></textarea>
             <br />
             <FileBase64 multiple={false} onDone = {(base64)=>{setFormData(prevFormData => {return { ...prevFormData, image1: base64} })}} />

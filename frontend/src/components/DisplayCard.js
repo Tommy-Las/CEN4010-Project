@@ -11,10 +11,9 @@ export default function DisplayCard(props) {
           <Card.Body className='item'>
               <Card.Title className='item-title'>{`${props.itemType}`}</Card.Title>
               <Card.Text> {`Estimated Cost: $${props.estimatedCost}`} </Card.Text>
+              <Card.Text> {`Quantity: $${props.quantity}`} </Card.Text>
               <Card.Text> {`Description: ${props.description}`} </Card.Text>
               {!(props.image1 === "") && <Card.Img variant="primary" src={props.image1.base64} height="180" />}
-              {!(props.image2 === "") && <Card.Img variant="primary" src={props.image2.base64} height="180" />}
-              {!(props.image3 === "") && <Card.Img variant="primary" src={props.image3.base64} height="180" />}
               <br>
               </br>
           </Card.Body>
