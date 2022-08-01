@@ -151,7 +151,7 @@ app.put('/', function(req, res){
       if(response.modifiedCount == 0){ //If no property was modified send error message
         console.log("Document not found: Unable to update");
         client.close();
-        return res.status(400).send();
+        return res.status(200).send();
       }
         else{ //If property was found and updated return success message
           client.close();
@@ -192,5 +192,5 @@ app.delete('/', function(req, res){
 })
 
 
-app.listen(process.env.PORT|| 8080);
+app.listen(process.env.PORT || 8080);
 console.log('Server is running...');
