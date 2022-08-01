@@ -21,8 +21,7 @@ export default function EditCard(props) {
         
   return (
     <>
-      <Card.Body>
-          <form onSubmit={props.updateProperty}>
+      <Card.Body className='border'>
               <Card.Text>
                   <br/>
                   <label htmlFor="itemType">Type of item: </label>
@@ -41,12 +40,10 @@ export default function EditCard(props) {
                   <FileBase64 multiple={false} defaultValue={props.image1} onDone = {(base64)=> props.setAllHomeInfo(prevCard => { return prevCard.map((card) => {                                                                                  
                                                                                      return card._id === props._id ? {...card, "image1": base64} : card  }) }) } />
               </Card.Text>
-              <button className='loginButton' value={props._id} id="updateButton" >Save</button>
-          </form>
-      </Card.Body>
-      <Card.Footer className='card-footer'>
-       
-      </Card.Footer>
+            </Card.Body>
+            <Card.Footer className='card-footer'>
+              <button className='loginButton' value={props._id} id="updateButton" onClick={props.updateProperty}>Save</button>
+            </Card.Footer>
     </>
   )
 }
