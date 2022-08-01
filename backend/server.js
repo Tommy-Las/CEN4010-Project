@@ -138,7 +138,7 @@ app.put('/', function(req, res){
     query._id = parseInt(obj._id);
     var newvals = { $set: {"location": obj.location, "propertyType": obj.propertyType, "sqft": obj.sqft , "bedroomCount": obj.bedroomCount, 
                            "bathRoomCount": obj.bathRoomCount, "units": obj.units, "estimatedCost": obj.estimatedCost , "other": obj.other, 
-                           image1: obj.image1, image2: obj.image2, image3: obj.image3  }}; 
+                           image1: obj.image1, "quantity":obj.quantity}}; 
 
 
     //Searches through inventory to find specified property and changes the fields set by newvals

@@ -31,8 +31,8 @@ export default function EditCard(props) {
                   <label htmlFor="estimatedCost">Estimated cost: </label>
                   <input type="number" className="formInput edit-input" name="estimatedCost" defaultValue={props.estimatedCost} onChange={handleChange} />
                   <br />
-                  <label htmlFor="description">Quantity: </label>
-                  <input type="text" className="formInput edit-input" name="description" defaultValue={props.quantity} onChange={handleChange} />
+                  <label htmlFor="quantity">Quantity: </label>
+                  <input type="text" className="formInput edit-input" name="quantity" defaultValue={props.quantity} onChange={handleChange} />
                   <br />
                   <label htmlFor="description">Description: </label>
                   <input type="text" className="formInput edit-input" name="description" defaultValue={props.description} onChange={handleChange} />
