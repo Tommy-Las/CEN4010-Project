@@ -56,8 +56,7 @@ function AddProperty(props) {
             <br />
             <label htmlFor="quantity">Quantity: </label>
             <input type="text" className="formInput" id="quantity" name="quantity" value={formData.quantity} onChange={handleChange} />
-            <br>
-            </br>
+            <br />
             <label htmlFor="description">Description: </label>
             <br />
             <textarea className="formInput" id="description" name="description" value={formData.description} onChange={handleChange}></textarea>

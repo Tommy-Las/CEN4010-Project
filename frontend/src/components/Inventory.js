@@ -69,22 +69,10 @@ function Inventory(props) {
     //Performs put method to update property in the inventory
     function doWork(update){
 
-        var image1Size = (parseInt(update.image1.size) > 0 ?  parseInt(update.image1.size) - 1 : 0);
-        var image2Size = (parseInt(update.image2.size) > 0 ?  parseInt(update.image2.size) - 1 : 0);
-        var image3Size = (parseInt(update.image3.size) > 0 ?  parseInt(update.image3.size) - 1 : 0);
-
-       if(image1Size + image2Size + image3Size > 75){  //Checks to see if file size is too large
-        alert("Error: Total image size exceeds 75KB ");
-        window.location.reload();
-       }
-       else{ //performs update
-
-            axios.put("http://localhost:8080", {update})
-            .then(() => {toggle(update._id); })    //If request was successful display success message and refresh page                                   
-            .catch(err => {toggle(update._id); //If request was unsuccessful display error message
-                           console.log(err)}); 
-
-       } 
+        axios.put("http://localhost:8080", {update})
+        .then(() => {toggle(update._id); })    //If request was successful display success message and refresh page                                   
+        .catch(err => {toggle(update._id); //If request was unsuccessful display error message
+                       console.log(err)}); 
 
     }
 
@@ -117,8 +105,8 @@ function Inventory(props) {
         return(
             <div key ={index}>
                 <DisplayCard toggle={()=>toggle(property._id)} deleteProperty={()=>deleteProperty(property._id)} setAllHomeInfo={setAllHomeInfo} 
-                                                               updateProperty={updateProperty} image1={property.image1} image2={property.image2} 
-                                                               image3={property.image3} _id={property._id} itemType={property.itemType} description={property.description} 
+                                                               updateProperty={updateProperty} image1={property.image1}  quantity={property.quantity}  
+                                                                _id={property._id} itemType={property.itemType} description={property.description} 
                                                                estimatedCost={property.estimatedCost} editButton={property.editButton} />         
             </div>
         )

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card, Button} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 import FileBase64 from "react-file-base64"
 
 //Creates the display for when a user is editing the property
@@ -38,13 +38,14 @@ export default function EditCard(props) {
                   <input type="text" className="formInput edit-input" name="description" defaultValue={props.description} onChange={handleChange} />
                   <br />
                   <h5>Image</h5>
-                  <FileBase64 multiple={false} defaultValue={props.image1} onDone = {(base64)=> props.setAllHomeInfo(prevCard => { return prevCard.map((card) => {                                                                                  return card._id === props._id ? {...card, "image1": base64} : card  }) }) } />
+                  <FileBase64 multiple={false} defaultValue={props.image1} onDone = {(base64)=> props.setAllHomeInfo(prevCard => { return prevCard.map((card) => {                                                                                  
+                                                                                     return card._id === props._id ? {...card, "image1": base64} : card  }) }) } />
               </Card.Text>
-              
+              <button className='loginButton' value={props._id} id="updateButton" >sdsd</button>
           </form>
       </Card.Body>
       <Card.Footer className='card-footer'>
-        <button className='loginButton' value={props._id}>Save</button>
+       
       </Card.Footer>
     </>
   )
