@@ -14,7 +14,6 @@ function Inventory(props) {
     //Stores all homes info
     const [allHomeInfo, setAllHomeInfo] = useState([]); 
 
-          
     /*      GET REQUEST TO RETURN ALL HOMES IN DATABASE (ADMIN)             
 
         //Does get request to show all properties in the inventory
@@ -38,7 +37,7 @@ function Inventory(props) {
     }, [])
 
 
-
+    console.log(allHomeInfo)
 
     //Controls edit option   
     function toggle(id){
@@ -68,10 +67,11 @@ function Inventory(props) {
 
     //Performs put method to update property in the inventory
     function doWork(update){
+        console.log("HEY " + update.editButton)
 
         axios.put("https://cen4010.herokuapp.com", {update})
         .then(() => {toggle(update._id); })    //If request was successful display success message and refresh page                                   
-        .catch(err => {toggle(update._id); //If request was unsuccessful display error message
+        .catch(err => { toggle(update._id);//If request was unsuccessful display error message
                        console.log(err)}); 
 
     }
