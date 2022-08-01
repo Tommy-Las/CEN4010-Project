@@ -71,7 +71,7 @@ function Inventory(props) {
 
         axios.put("http://localhost:8080", {update})
         .then(() => {toggle(update._id); })    //If request was successful display success message and refresh page                                   
-        .catch(err => { //If request was unsuccessful display error message
+        .catch(err => { toggle(update._id);//If request was unsuccessful display error message
                        console.log(err)}); 
 
     }
