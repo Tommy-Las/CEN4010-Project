@@ -8,7 +8,7 @@ function AddProperty(props) {
     //User ID
     const { user } = useUserContext();
     const user_id = user.uid;
- 
+
     //Stores form data
     const [formData, setFormData] = useState({ userID: user_id,
                                                _id: "",
@@ -16,7 +16,8 @@ function AddProperty(props) {
                                                estimatedCost: "",
                                                quantity: "",
                                                description: "" ,
-                                               image1:"",
+                                               image: "",
+                                               video: "",                            
                                                editButton: true          });
 
     //Updates the state formData 
@@ -38,7 +39,7 @@ function AddProperty(props) {
         axios.post("http://localhost:8080", {formData})
         .then(() => { alert("Success: Property added."); //If request was successful show good alert and refresh page 
                       document.location.reload(); }) 
-        .catch(() => {alert("Error: Total image size exceeds 75KB ");
+        .catch(() => {alert("Error: Please try again");
                       document.location.reload();});  //If request was unsuccessful show error message 
         
     }
@@ -61,7 +62,11 @@ function AddProperty(props) {
             <br />
             <textarea className="formInput" id="description" name="description" value={formData.description} onChange={handleChange}></textarea>
             <br />
-            <FileBase64 multiple={false} onDone = {(base64)=>{setFormData(prevFormData => {return { ...prevFormData, image1: base64} })}} />
+            <label htmlFor="image">Image: </label>
+            <FileBase64 multiple={false} name="image" onDone = {(base64)=>{setFormData(prevFormData => {return { ...prevFormData, image: base64} })}} />
+            <br />
+            <label htmlFor="video">Video: </label>
+            <FileBase64 multiple={false} name="video" onDone = {(base64)=>{setFormData(prevFormData => {return { ...prevFormData, video: base64} })}} />
             <br />
             <button id="addPropertyButton">Submit</button>
         </form>

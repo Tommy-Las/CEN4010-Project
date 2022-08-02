@@ -1,66 +1,89 @@
-import React, {useState} from "react"
-import axios from "axios"
+import React, {useState, useEffect} from "react"
 import { useUserContext } from "../context/userContext";
+import axios from "axios"
+import ProfileCard from "./ProfileCard"
+import ProfileEditCard from "./ProfileEditCard"
 
 function User(props){ 
 
-    //Stores user ID
-    const {user} = useUserContext();
-    const user_id = user.id;
+    //Variables & states
+    const { user } = useUserContext();
+    const user_id = user.uid;
+    const [isProfileReturned, setIsProfileReturned] = useState(false);
+    const [editButton, setEditButton] = useState(true);
+    const [profileData, setProfileData] = useState({ _id: "",
+                                                     userID: user_id, 
+                                                     name: "",
+                                                     email: "",
+                                                     phoneNumber: "",
+                                                     address: "",
+                                                     authorizedUsers: ""  })
 
-    //Stores form data
-    const [formData, setFormData] = useState({ userID: user_id, 
-                                               name: "",
-                                               email: "",
-                                               phoneNumber: "",
-                                               address: "",
-                                               authorizedUsers: "" })
 
-                                               
-    //Does post request after submitting the form
+    //Does get request to display profile
+    useEffect(()=> {
+        var data = {userID: user_id}
+        axios.get("http://localhost:8080/profile", { params: data })
+        .then((res) => { if(res.data.length !== 0){
+                             setProfileData(res.data[0]);
+                             setIsProfileReturned(true);
+                             
+                            }}) //Stores data in AllHomeInfo
+        .catch((error) => console.log(error)); //Logs error if found
+    }, [])
+
+
+     //Controls edit option   
+    function toggle(){
+        setEditButton(prevData => {  return (!prevData) })
+    }
+
+                     
+    //Handles the action for when the button is clicked
     function handleSubmit (event) {
-        
-        event.preventDefault(); //Stops the page from refreshing after pressing the submit button
 
-        //Performs post method to add a new home to the database
-        axios.post("https://cen4010.herokuapp.com", {formData})
-        .then(() => { alert("Success: Home added."); //If request was successful show good alert and refresh page 
-                      document.location.reload(); }) 
-        .catch(() => {alert("Error: Total image size exceeds 75KB ");
-                      document.location.reload();});  //If request was unsuccessful show error message 
+        event.preventDefault(); //Stops the page from refreshing after pressing the submit button
+        if(isProfileReturned === true){ //Update profile if it was already created
+
+        axios.put("http://localhost:8080/profile", {profileData})
+            .then(() => {toggle(); })    //If successful                               
+            .catch(err => { alert("Unable to update. Please try again."); //If request was unsuccessful display error message
+                            toggle();
+                            console.log(err)}); 
+        }
+        else{ //Create a new profile if none exist
+            axios.post("http://localhost:8080/profile", {profileData})
+            .then(() => { setIsProfileReturned(true); //If successful  
+                          toggle(); 
+                        }) 
+            .catch(() => {alert("Please try again"); //If request was unsuccessful show error message 
+                          document.location.reload();}); 
+        }
         
     } 
 
-
-    //Stores entered information from form in data
+    //Stores entered information
     function handleChange(e) {
-        setFormData(prevFormData => {
-            return { ...prevFormData, [e.target.name]: e.target.value }
+        setProfileData(prevData => {
+            return { ...prevData, [e.target.name]: e.target.value }
         })
         
     }
-    return <div>
-        <form className="form" onSubmit={handleSubmit}>
-            <h3 className="center title">Profile</h3>
-            <label htmlFor="name">Name: </label>
-            <input type="text" className="formInput" name="name" id="name" value={formData.name} onChange={handleChange} />
-            <br />
-            <label htmlFor="email">Email: </label>
-            <input type="email" className="formInput" name="email" id="email" value={formData.email} onChange={handleChange}/>
-            <br />
-            <label htmlFor="phoneNumber">Phone number: </label>
-            <input type="tel" className="formInput" name="phoneNumber" id="phoneNumber" value={formData.phoneNumber} onChange={handleChange}/>
-            <br />
-            <label htmlFor="address">Permanent address: </label>
-            <input type="text" className="formInput" name="address" id="address" value={formData.address} onChange={handleChange}/>
-            <br />
-            <label htmlFor="authorizedUsers">Authorized Users: </label>
-            <input type="text" className="formInput" name="authorizedUsers" id="authorizedUsers" value={formData.authorizedUsers} onChange={handleChange}/>
-            <button id="profileButton">Save</button>
-        </form>
-        <img className="leftHouseImage" src={props.leftImage} alt="house" />
-        <img className="rightHouseImage" src={props.rightImage} alt="house" />
-    </div>
+
+    return (
+        <div>
+            {editButton === true ?
+                    <ProfileCard toggle={toggle} userID={profileData.userID} name={profileData.name} email={profileData.email} 
+                                phoneNumber={profileData.phoneNumber} address={profileData.address} authorizedUsers={profileData.authorizedUsers} />             
+                    :          
+                    <ProfileEditCard handleSubmit={handleSubmit} handleChange={handleChange} userID={profileData.userID} name={profileData.name} email={profileData.email} 
+                    phoneNumber={profileData.phoneNumber} address={profileData.address} authorizedUsers={profileData.authorizedUsers} />
+            }
+
+            <img className="leftHouseImage" src={props.leftImage} alt="house" />
+            <img className="rightHouseImage" src={props.rightImage} alt="house" />
+        </div>
+    )
  }
 
  export default User

@@ -36,9 +36,12 @@ export default function EditCard(props) {
                   <label htmlFor="description">Description: </label>
                   <input type="text" className="formInput edit-input" name="description" defaultValue={props.description} onChange={handleChange} />
                   <br />
-                  <h5>Image</h5>
-                  <FileBase64 multiple={false} defaultValue={props.image1} onDone = {(base64)=> props.setAllHomeInfo(prevCard => { return prevCard.map((card) => {                                                                                  
-                                                                                     return card._id === props._id ? {...card, "image1": base64} : card  }) }) } />
+                  <label htmlFor="image">Image: </label>
+                  <FileBase64 name="image" multiple={false} defaultValue={props.image} onDone = {(base64)=> props.setAllHomeInfo(prevCard => { return prevCard.map((card) => {                                                                                  
+                                                                                                 return card._id === props._id ? {...card, "image": base64} : card  }) }) } />   
+                  <label htmlFor="video">Video: </label>                                                                        
+                  <FileBase64 name="video" multiple={false} defaultValue={props.video} onDone = {(base64)=> props.setAllHomeInfo(prevCard => { return prevCard.map((card) => {                                                                                  
+                                                                                                 return card._id === props._id ? {...card, "video": base64} : card  }) }) } />
               </Card.Text>
             </Card.Body>
             <Card.Footer className='card-footer'>

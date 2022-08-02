@@ -13,9 +13,10 @@ export default function DisplayCard(props) {
               <Card.Text> {`Estimated Cost: $${props.estimatedCost}`} </Card.Text>
               <Card.Text> {`Quantity: ${props.quantity}`} </Card.Text>
               <Card.Text> {`Description: ${props.description}`} </Card.Text>
-              {!(props.image1 === "") && <Card.Img variant="primary" src={props.image1.base64} height="180" />}
-              <br>
-              </br>
+              {!(props.image === "") && <Card.Img className='item-image' variant="primary" src={props.image.base64} height="180" />}
+              {!(props.video === "") &&    <video width="320" height="240" controls>
+                                              <source src={props.video.base64} type={props.video.type} />
+                                           </video>  }
           </Card.Body>
           <Card.Footer className='card-footer'>
             <button onClick={props.toggle} className='loginButton card-button' value={props._id}>Edit</button>
@@ -24,8 +25,8 @@ export default function DisplayCard(props) {
         </>
           : 
           <EditCard toggle={props.toggle} updateProperty={props.updateProperty} deleteProperty={props.deleteProperty} setAllHomeInfo={props.setAllHomeInfo} 
-                    image1={props.image1} quantity={props.quantity}  _id={props._id} itemType={props.itemType} editButton={props.editButton}
-                    estimatedCost={props.estimatedCost} description={props.description} />
+                    image={props.image} quantity={props.quantity}  _id={props._id} itemType={props.itemType} editButton={props.editButton}
+                    estimatedCost={props.estimatedCost} description={props.description} video={props.video}   />
 
         }
     </Card>

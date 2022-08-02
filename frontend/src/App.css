@@ -88,7 +88,7 @@ li a {
     max-width: 500px;
     background-color: white;
     margin: 20px auto;
-    border: 1px solid black;
+    border: 2px solid black;
     padding: 30px;
 }
 
@@ -99,6 +99,18 @@ li a {
 #addPropertyButton{
     position: relative;
     left: 40%;
+    padding: 10px 10px;
+    margin-left: 5px;
+    margin-top: 12px;
+    margin-bottom: 3px;
+    background-color: #86dcb9;
+    border-radius: 100px;
+    border: none;
+}
+
+.button{
+    position: relative;
+    left: 36%;
     padding: 10px 10px;
     margin-left: 5px;
     margin-top: 12px;
@@ -223,7 +235,7 @@ form textarea{
     margin: 40px;
     color: black;
     background-color: white;
-    border: 3px solid black;
+    border: 2px solid black;
 }
 
 .item{

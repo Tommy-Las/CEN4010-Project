@@ -14,6 +14,7 @@ function Inventory(props) {
     //Stores all homes info
     const [allHomeInfo, setAllHomeInfo] = useState([]); 
 
+
     /*      GET REQUEST TO RETURN ALL HOMES IN DATABASE (ADMIN)             
 
         //Does get request to show all properties in the inventory
@@ -35,9 +36,6 @@ function Inventory(props) {
         .catch((error) => console.log(error)); //Logs error if found
         
     }, [])
-
-
-    console.log(allHomeInfo)
 
     //Controls edit option   
     function toggle(id){
@@ -67,7 +65,6 @@ function Inventory(props) {
 
     //Performs put method to update property in the inventory
     function doWork(update){
-        console.log("HEY " + update.editButton)
 
         axios.put("http://localhost:8080", {update})
         .then(() => {toggle(update._id); })    //If request was successful display success message and refresh page                                   
@@ -93,9 +90,9 @@ function Inventory(props) {
 
         //Performs delete method to delete the property with matching id
         axios.delete("http://localhost:8080", {data: {"_id": id}})
-             .then(() => {alert("Property deleted") //If request was successful show success message and refresh page
+             .then(() => {alert("Item deleted") //If request was successful show success message and refresh page
                              document.location.reload();})                  
-             .catch(err => {alert("Unable to delete property"); //If request was unsuccessful display error message
+             .catch(err => {alert("Unable to delete property. Please try again"); //If request was unsuccessful display error message
                             console.log(err)});  
     }
     
@@ -105,9 +102,9 @@ function Inventory(props) {
         return(
             <div key ={index}>
                 <DisplayCard toggle={()=>toggle(property._id)} deleteProperty={()=>deleteProperty(property._id)} setAllHomeInfo={setAllHomeInfo} 
-                                                               updateProperty={updateProperty} image1={property.image1}  quantity={property.quantity}  
+                                                               updateProperty={updateProperty} image={property.image}  quantity={property.quantity}  
                                                                 _id={property._id} itemType={property.itemType} description={property.description} 
-                                                               estimatedCost={property.estimatedCost} editButton={property.editButton} />         
+                                                               estimatedCost={property.estimatedCost} editButton={property.editButton} video={property.video}  />         
             </div>
         )
     }
