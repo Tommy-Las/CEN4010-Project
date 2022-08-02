@@ -142,10 +142,8 @@ app.put('/', function(req, res){
     //Used to filter search for specified items & set new fields
     var query = {}; 
     query._id = parseInt(obj._id);
-    var newvals = { $set: {"location": obj.location, "propertyType": obj.propertyType, "sqft": obj.sqft , "bedroomCount": obj.bedroomCount, 
-                           "bathRoomCount": obj.bathRoomCount, "units": obj.units, "estimatedCost": obj.estimatedCost , "other": obj.other, 
-                           image1: obj.image1, "quantity":obj.quantity}}; 
-
+    var newvals = { $set: {"itemType": obj.itemType, "estimatedCost": obj.estimatedCost, "quantity": obj.quantity , "description": obj.description, 
+                           "image1": obj.image1 }}; 
 
     //Searches through inventory to find specified property and changes the fields set by newvals
     dbo.collection("inventory").updateOne(query, newvals, function(err, response) {
@@ -153,7 +151,7 @@ app.put('/', function(req, res){
       if(response.modifiedCount == 0){ //If no property was modified send error message
         console.log("Document not found: Unable to update");
         client.close();
-        return res.status(400).send();
+        return res.status(200).send();
       }
         else{ //If property was found and updated return success message
           client.close();
@@ -194,5 +192,5 @@ app.delete('/', function(req, res){
 })
 
 
-app.listen(process.env.PORT|| 8080);
+app.listen(process.env.PORT || 8080);
 console.log('Server is running...');
