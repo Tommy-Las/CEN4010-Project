@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 const MongoClient = require('mongodb').MongoClient;
-var uri = "mongodb://127.0.0.1:27017/";
+//var uri = "mongodb+srv://tommylas:cen4010@cen4010.rjdv7.mongodb.net/?retryWrites=true&w=majority";
 
 //HOSTED DATABASE
 //mongodb+srv://tommylas:cen4010@cen4010.rjdv7.mongodb.net/?retryWrites=true&w=majority
 
 //FOR LOCAL 
-//var uri = "mongodb://127.0.0.1:27017/";
+var uri = "mongodb://127.0.0.1:27017/";
 
 
 require('dotenv').config()
@@ -26,7 +26,7 @@ app.use(cors(corsOptions))
 
 //Reads and parse incoming requests
 app.use(express.urlencoded({extended: true})); 
-app.use(express.json()); 
+app.use(express.json({limit: '50mb'}));
 
 // app.use(function (req, res, next) {
 
@@ -73,6 +73,36 @@ app.post('/', function(req, res){
         }
   });
 })
+
+
+//Post method to add a new home to the inventory
+app.post('/profile', function(req, res){
+  var obj = req.body.profileData; //Stores incoming home information
+  obj._id = new Date().getTime(); //Creates unique property id 
+
+  console.log(obj)
+  //Connects to MongoDB server
+  MongoClient.connect(uri, { useUnifiedTopology: true }, function(err, client) {
+
+    if (err){  //Throws error if method failed to connect to server
+      throw err;
+    }
+    else{
+      var dbo = client.db("westBocaMakeBelieve"); // Creates/links database
+
+          //Insert property into database
+          dbo.collection("profiles").insertOne(obj, function(err, response) {
+            if (err) throw err; //Throws error if method failed to insert document
+            else{
+              console.log("Success: New profile created");
+              client.close();
+              return res.status(201).send(response);
+            }
+          });
+        }
+  });
+})
+
 
 
 //Get method to return all homes in the database 
@@ -128,12 +158,43 @@ app.get('/', function(req, res){
 
 })
 
+//Get method to return all homes for specified user 
+app.get('/profile', function(req, res){
+  //Creates variables used to store submitted data
+  var userID = req.query.userID;
+  console.log(userID)
+
+  //Connects to MongoDB server
+  MongoClient.connect(uri, { useUnifiedTopology: true }, function(err, client) {
+    if (err) throw err; //Throws error if method failed to connect to server
+
+    var dbo = client.db("westBocaMakeBelieve"); //Creates/links database
+    let query = { "userID": userID}; //Used to filter search for specified items
+
+    //Searches through inventory to find specified record
+    dbo.collection("profiles").find(query).toArray(function(err, response) {
+      if (err) throw err; //Throws error if method failed to search through the collection
+      else if(response.length == 0){ //If no property is found return error message
+          client.close();
+          console.log("No Profile found");
+          return res.status(400).send(response);       
+      }
+      else{ //If document is found return it
+        client.close();
+        console.log("Found profle");
+        return res.status(200).send(response);
+      }
+      });   
+  });
+
+})
+
+
 
 
 //Put method to update information from a home already in the database
 app.put('/', function(req, res){
   const obj = req.body.update; //Stores incoming home information
-  console.log(obj)
   //Connects to MongoDB server
   MongoClient.connect(uri, { useUnifiedTopology: true }, function(err, client) {
     if (err) throw err; //Throws error if method failed to connect to server
@@ -142,25 +203,48 @@ app.put('/', function(req, res){
     //Used to filter search for specified items & set new fields
     var query = {}; 
     query._id = parseInt(obj._id);
+
     var newvals = { $set: {"itemType": obj.itemType, "estimatedCost": obj.estimatedCost, "quantity": obj.quantity , "description": obj.description, 
-                           "image1": obj.image1 }}; 
+                           "image": obj.image, "video": obj.video }}; 
 
     //Searches through inventory to find specified property and changes the fields set by newvals
     dbo.collection("inventory").updateOne(query, newvals, function(err, response) {
       if (err) throw err; //Throws error if method failed to update property
-      if(response.modifiedCount == 0){ //If no property was modified send error message
-        console.log("Document not found: Unable to update");
-        client.close();
-        return res.status(200).send();
-      }
-        else{ //If property was found and updated return success message
           client.close();
           console.log("Property updated");
           return res.status(200).send();
-        }
     });
   });
 })
+
+
+//Put method to update information from a home already in the database
+app.put('/profile', function(req, res){
+  const obj = req.body.profileData; //Stores incoming home information
+
+  //Connects to MongoDB server
+  MongoClient.connect(uri, { useUnifiedTopology: true }, function(err, client) {
+    if (err) throw err; //Throws error if method failed to connect to server
+
+    var dbo = client.db("westBocaMakeBelieve"); //Creates/links database
+    //Used to filter search for specified items & set new fields
+    var query = {}; 
+    query._id = parseInt(obj._id);
+    var newvals = { $set: {"name": obj.name, "email": obj.email, "phoneNumber": obj.phoneNumber , "address": obj.address, 
+                           "authorizedUsers": obj.authorizedUsers }}; 
+
+    //Searches through inventory to find specified property and changes the fields set by newvals
+    dbo.collection("profiles").updateOne(query, newvals, function(err, response) {
+      if (err) throw err; //Throws error if method failed to update property
+       //If property was found and updated return success message
+          client.close();
+          console.log("Profile updated");
+          return res.status(200).send();
+        
+    });
+  });
+})
+
 
 
 //Delete method to delete a home from the database
