@@ -30,7 +30,7 @@ function Inventory(props) {
     useEffect(()=> {
         var data = {userID: user_id}
        
-        axios.get("https://cen4010.herokuapp.com", { params: data })
+        axios.get("http://localhost:8080", { params: data })
         .then((res) => { setAllHomeInfo(res.data); }) //Stores data in AllHomeInfo
         .catch((error) => console.log(error)); //Logs error if found
         
@@ -69,7 +69,7 @@ function Inventory(props) {
     function doWork(update){
         console.log("HEY " + update.editButton)
 
-        axios.put("https://cen4010.herokuapp.com", {update})
+        axios.put("http://localhost:8080", {update})
         .then(() => {toggle(update._id); })    //If request was successful display success message and refresh page                                   
         .catch(err => { toggle(update._id);//If request was unsuccessful display error message
                        console.log(err)}); 
@@ -92,7 +92,7 @@ function Inventory(props) {
     function deleteProperty(id) {
 
         //Performs delete method to delete the property with matching id
-        axios.delete("https://cen4010.herokuapp.com", {data: {"_id": id}})
+        axios.delete("http://localhost:8080", {data: {"_id": id}})
              .then(() => {alert("Property deleted") //If request was successful show success message and refresh page
                              document.location.reload();})                  
              .catch(err => {alert("Unable to delete property"); //If request was unsuccessful display error message

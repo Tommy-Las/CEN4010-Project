@@ -35,7 +35,7 @@ function AddProperty(props) {
         //https://cen4010.herokuapp.com
         //http://localhost:8080
         //Performs post method to add a new home to the database
-        axios.post("https://cen4010.herokuapp.com", {formData})
+        axios.post("http://localhost:8080", {formData})
         .then(() => { alert("Success: Property added."); //If request was successful show good alert and refresh page 
                       document.location.reload(); }) 
         .catch(() => {alert("Error: Total image size exceeds 75KB ");

@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 const MongoClient = require('mongodb').MongoClient;
-var uri = "mongodb+srv://tommylas:cen4010@cen4010.rjdv7.mongodb.net/?retryWrites=true&w=majority";
+var uri = "mongodb://127.0.0.1:27017/";
 
 //HOSTED DATABASE
 //mongodb+srv://tommylas:cen4010@cen4010.rjdv7.mongodb.net/?retryWrites=true&w=majority
