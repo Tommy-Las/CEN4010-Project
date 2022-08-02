@@ -93,13 +93,8 @@ function Inventory(props) {
     function deleteProperty(id) {
 
         //Performs delete method to delete the property with matching id
-<<<<<<< HEAD
-        axios.delete("http://localhost:8080", {data: {"_id": id}})
-             .then(() => {alert("Item deleted") //If request was successful show success message and refresh page
-=======
         axios.delete("https://cen4010.herokuapp.com", {data: {"_id": id}})
-             .then(() => {alert("Property deleted") //If request was successful show success message and refresh page
->>>>>>> c1f512e05dd337696786f73db023b7ef7f7c85b1
+             .then(() => {alert("Item deleted") //If request was successful show success message and refresh page
                              document.location.reload();})                  
              .catch(err => {alert("Unable to delete property. Please try again"); //If request was unsuccessful display error message
                             console.log(err)});  
@@ -136,7 +131,7 @@ function Inventory(props) {
             <div id='inventory-page'>   
                 <button onClick={saveInventory} className='loginButton' id='download-button' >SAVE INVENTORY</button>
                 <div id='main-container'>
-                    {(allHomeInfo.length === 0) ? <div>Empty Inventory</div> : allHomeInfo.map(tableInfo)}
+                    {(allHomeInfo.length === 0) ? <div id="empty">Empty Inventory</div> : allHomeInfo.map(tableInfo)}
                 </div>
                 <img className="leftHouseImage" src={props.leftImage} alt="house" />
                 <img className="rightHouseImage" src={props.rightImage} alt="house" />

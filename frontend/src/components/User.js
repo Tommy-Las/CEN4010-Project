@@ -23,7 +23,7 @@ function User(props){
     //Does get request to display profile
     useEffect(()=> {
         var data = {userID: user_id}
-        axios.get("http://localhost:8080/profile", { params: data })
+        axios.get("https://cen4010.herokuapp.com/profile", { params: data })
         .then((res) => { if(res.data.length !== 0){
                              setProfileData(res.data[0]);
                              setIsProfileReturned(true);
@@ -45,14 +45,14 @@ function User(props){
         event.preventDefault(); //Stops the page from refreshing after pressing the submit button
         if(isProfileReturned === true){ //Update profile if it was already created
 
-        axios.put("http://localhost:8080/profile", {profileData})
+        axios.put("https://cen4010.herokuapp.com/profile", {profileData})
             .then(() => {toggle(); })    //If successful                               
             .catch(err => { alert("Unable to update. Please try again."); //If request was unsuccessful display error message
                             toggle();
                             console.log(err)}); 
         }
         else{ //Create a new profile if none exist
-            axios.post("http://localhost:8080/profile", {profileData})
+            axios.post("https://cen4010.herokuapp.com/profile", {profileData})
             .then(() => { setIsProfileReturned(true); //If successful  
                           toggle(); 
                         }) 
