@@ -10,7 +10,7 @@ function sendEmail(email) {
         //url-local-test: http://localhost:3000/verify
         const actionCodeSettings = {
 
-            url: 'http://localhost:3000/verify',
+            url: 'https://make-believe.netlify.app/verify',
             handleCodeInApp: true,
         }
 

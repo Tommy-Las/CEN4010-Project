@@ -90,6 +90,7 @@ li a {
     margin: 20px auto;
     border: 2px solid black;
     padding: 30px;
+    font-size: 20px;
 }
 
 #image1, #image2, #image3 {
@@ -163,7 +164,7 @@ li a {
 
 .nav-button {
     color: black !important; 
-    font-size: 20px;
+    font-size: 22px;
     display: inline-block;
     padding: 0px 5px;
     list-style: none;
@@ -222,17 +223,20 @@ form textarea{
 
 .item-title{
     font-size: 30px;
+    margin-bottom: 12px;
 }
 
 #main-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    /* border: 3px solid blue; */
 }
+
 .item-container{
     max-width: 400px;
-    height: 500px;
-    margin: 40px;
+    height: 520px;
+    margin: 30px;
     color: black;
     background-color: white;
     border: 2px solid black;
@@ -240,6 +244,8 @@ form textarea{
 
 .item{
     width: auto;
+    text-align: left;
+    font-size: 17px
 }
 
 .card-footer{
@@ -253,6 +259,19 @@ form textarea{
 
 .edit-input{
     margin:5px;
+}
+
+#download-button{
+    margin-top: 35px;
+    padding: 25px 55px;
+    border: 2px solid black;
+    font-size: 20px;
+}
+#inventory-page{
+    display: block;
+    text-align: center;
+    /* border: 5px solid black; */
+    align-content: center;
 }
 
 
