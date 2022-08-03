@@ -6,7 +6,7 @@ export default function ProfileCard(props) {
   return (
     <Card className='form'>
         <Card.Title className="center title"><h3>Profile</h3></Card.Title>
-          <Card.Body className='item'>
+          <Card.Body className='item-profile'>
               <Card.Text> {`Name: ${props.name}`} </Card.Text>
               <Card.Text> {`Email: ${props.email}`} </Card.Text>
               <Card.Text> {`Phone number: ${props.phoneNumber}`} </Card.Text>

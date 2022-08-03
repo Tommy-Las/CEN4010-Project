@@ -38,7 +38,8 @@ export default function EditCard(props) {
                   <br />
                   <label htmlFor="image">Image: </label>
                   <FileBase64 name="image" multiple={false} defaultValue={props.image} onDone = {(base64)=> props.setAllHomeInfo(prevCard => { return prevCard.map((card) => {                                                                                  
-                                                                                                 return card._id === props._id ? {...card, "image": base64} : card  }) }) } />   
+                                                                                                 return card._id === props._id ? {...card, "image": base64} : card  }) }) } />
+                  <br />                                                                                 
                   <label htmlFor="video">Video: </label>                                                                        
                   <FileBase64 name="video" multiple={false} defaultValue={props.video} onDone = {(base64)=> props.setAllHomeInfo(prevCard => { return prevCard.map((card) => {                                                                                  
                                                                                                  return card._id === props._id ? {...card, "video": base64} : card  }) }) } />
