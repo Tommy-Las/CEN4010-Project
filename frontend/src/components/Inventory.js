@@ -129,7 +129,7 @@ function Inventory(props) {
     
     return (
             <div id='inventory-page'>   
-                <button onClick={saveInventory} className='loginButton' id='download-button' >SAVE INVENTORY</button>
+                <button onClick={saveInventory} className='loginButton' id='download-button' >DOWNLOAD INVENTORY</button>
                 <div id='main-container'>
                     {(allHomeInfo.length === 0) ? <div id="empty">Empty Inventory</div> : allHomeInfo.map(tableInfo)}
                 </div>
